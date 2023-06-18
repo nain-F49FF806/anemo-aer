@@ -1,3 +1,7 @@
+# Aeolus
+
+This is an experimental fork of [Anemo](https://github.com/2bllw8/anemo/), that uses external storage.
+
 # Anemo
 
 [![Anemo CI](https://github.com/2bllw8/anemo/actions/workflows/main.yml/badge.svg)](https://github.com/2bllw8/anemo/actions/workflows/main.yml)
