@@ -15,7 +15,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 16
         versionName '2.6.0'
-        applicationId 'exe.bbll8.aeolus'
+        applicationId 'exe.bbllw8.aeolus'
     }
 
     buildFeatures {
