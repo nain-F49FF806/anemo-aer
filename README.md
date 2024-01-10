@@ -2,6 +2,8 @@
 
 This is an experimental fork of [Anemo](https://github.com/2bllw8/anemo/), that uses external storage.
 
+See [releases](https://github.com/nain-F49FF806/anemo-aeolus/releases) for built binaries (apk file) and further hints. 
+
 # Anemo
 
 [![Anemo CI](https://github.com/2bllw8/anemo/actions/workflows/main.yml/badge.svg)](https://github.com/2bllw8/anemo/actions/workflows/main.yml)
