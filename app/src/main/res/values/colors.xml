@@ -7,6 +7,6 @@
     <color name="anemo_primary_dark">#f0f0f0</color>
     <color name="anemo_accent">@color/launcher_background</color>
 
-    <color name="launcher_background">#C85125</color>
+    <color name="launcher_background">#2196F3</color>
     <color name="launcher_foreground">#F9EBF0</color>
 </resources>
