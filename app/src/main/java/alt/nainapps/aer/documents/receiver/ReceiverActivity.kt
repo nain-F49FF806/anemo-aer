@@ -2,7 +2,7 @@
  * Copyright (c) 2022 2bllw8
  * SPDX-License-Identifier: GPL-3.0-only
  */
-package exe.bbllw8.anemo.documents.receiver
+package alt.nainapps.aer.documents.receiver
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -15,9 +15,9 @@ import android.os.Bundle
 import android.provider.DocumentsContract
 import android.provider.OpenableColumns
 import android.util.Log
-import exe.bbllw8.anemo.R
-import exe.bbllw8.anemo.documents.home.HomeEnvironment
-import exe.bbllw8.anemo.task.TaskExecutor
+import alt.nainapps.aer.R
+import alt.nainapps.aer.documents.home.HomeEnvironment
+import alt.nainapps.aer.task.TaskExecutor
 import exe.bbllw8.either.Try
 import java.util.Optional
 import java.util.concurrent.atomic.AtomicReference

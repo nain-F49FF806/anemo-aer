@@ -2,7 +2,7 @@
  * Copyright (c) 2022 2bllw8
  * SPDX-License-Identifier: GPL-3.0-only
  */
-package exe.bbllw8.anemo.shell
+package alt.nainapps.aer.shell
 
 import android.app.Activity
 import android.content.Intent
@@ -11,10 +11,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.DocumentsContract
 import android.widget.Toast
-import exe.bbllw8.anemo.R
-import exe.bbllw8.anemo.documents.home.HomeEnvironment
-import exe.bbllw8.anemo.lock.LockStore
-import exe.bbllw8.anemo.lock.UnlockActivity
+import alt.nainapps.aer.R
+import alt.nainapps.aer.documents.home.HomeEnvironment
+import alt.nainapps.aer.lock.LockStore
+import alt.nainapps.aer.lock.UnlockActivity
 import java.util.Arrays
 
 class LauncherActivity : Activity() {

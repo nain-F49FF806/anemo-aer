@@ -3,12 +3,12 @@
   ~ SPDX-License-Identifier: GPL-3.0-only
   -->
 <resources>
-    <string name="app_name">Anemo</string>
+    <string name="app_name">Aer</string>
 
     <string name="anemo_description">Archiviazione privata locale</string>
-    <string name="anemo_info">I file archiviati nell\'archivio di Anemo sono privati e le altre app non possono accedervi senza il consenso dell\'utente</string>
+    <string name="anemo_info">I file archiviati nell\'archivio di Aer sono privati e le altre app non possono accedervi senza il consenso dell\'utente</string>
 
-    <string name="password_label">Password di Anemo</string>
+    <string name="password_label">Password di Aer</string>
 
     <string name="password_hint_field">Password</string>
     <string name="password_hint_repeat">Digita di nuovo per confermare</string>
@@ -18,34 +18,34 @@
     <string name="password_error_mismatch">Le password non corrispondono</string>
     <string name="password_error_wrong">Password errata</string>
 
-    <string name="password_input_message">Digita la tua password di Anemo per sbloccare l\'archiviazione</string>
+    <string name="password_input_message">Digita la tua password di Aer per sbloccare l\'archiviazione</string>
     <string name="password_input_action">Sblocca</string>
 
     <string name="password_set_title">Aggiungi la protezione con password</string>
-    <string name="password_set_message">Imposta una password per bloccare l\'accesso all\'archiviazione di Anemo</string>
+    <string name="password_set_message">Imposta una password per bloccare l\'accesso all\'archiviazione di Aer</string>
     <string name="password_set_action">Imposta password</string>
 
     <string name="password_change_title">Modifica password</string>
-    <string name="password_change_message">Modifica la password per sbloccare l\'archiviazione di Anemo</string>
+    <string name="password_change_message">Modifica la password per sbloccare l\'archiviazione di Aer</string>
     <string name="password_change_action">Modifica</string>
     <string name="password_change_remove">Rimuovi</string>
 
-    <string name="receiver_label">Importa in Anemo</string>
+    <string name="receiver_label">Importa in Aer</string>
 
     <string name="receiver_importing_message">Importando file…</string>
-    <string name="receiver_importing_done_ok">Importato in Anemo</string>
+    <string name="receiver_importing_done_ok">Importato in Aer</string>
     <string name="receiver_importing_done_fail">Impossibile importare file. Riprova</string>
 
     <string name="receiver_default_file_name">File condiviso</string>
 
-    <string name="tile_title">Archiviazione di Anemo</string>
+    <string name="tile_title">Archiviazione di Aer</string>
 
-    <string name="tile_lock">Blocca Anemo</string>
-    <string name="tile_unlock">Sblocca Anemo</string>
+    <string name="tile_lock">Blocca Aer</string>
+    <string name="tile_unlock">Sblocca Aer</string>
     <string name="tile_status_locked">Bloccato</string>
     <string name="tile_status_unlocked">Sbloccato</string>
 
-    <string name="tile_auto_lock">L\'archiviazione di Anemo è stata bloccata automaticamente</string>
+    <string name="tile_auto_lock">L\'archiviazione di Aer è stata bloccata automaticamente</string>
 
     <string name="launcher_no_activity">Impossibile trovare l\'app File di sistema</string>
     <string name="shortcut_config_long">Configurazione</string>

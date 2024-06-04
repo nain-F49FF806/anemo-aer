@@ -62,7 +62,7 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    namespace 'exe.bbllw8.anemo'
+    namespace 'alt.nainapps.aer'
 }
 
 dependencies {

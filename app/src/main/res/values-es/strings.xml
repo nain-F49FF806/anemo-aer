@@ -3,12 +3,12 @@
   ~ SPDX-License-Identifier: GPL-3.0-only
   -->
 <resources>
-    <string name="app_name">Anemo</string>
+    <string name="app_name">Aer</string>
 
     <string name="anemo_description">Almacenamiento privado local</string>
-    <string name="anemo_info">Los archivos almacenados en el almacenamiento de Anemo son privados y otras aplicaciones no pueden acceder a ellos sin el consentimiento del usuario.</string>
+    <string name="anemo_info">Los archivos almacenados en el almacenamiento de Aer son privados y otras aplicaciones no pueden acceder a ellos sin el consentimiento del usuario.</string>
 
-    <string name="password_label">Contraseña Anemo</string>
+    <string name="password_label">Contraseña Aer</string>
 
     <string name="password_hint_field">Contraseña</string>
     <string name="password_hint_repeat">Escriba de nuevo para confirmar</string>
@@ -18,34 +18,34 @@
     <string name="password_error_mismatch">Las contraseñas no coinciden</string>
     <string name="password_error_wrong">Contraseña incorrecta</string>
 
-    <string name="password_input_message">Escriba su contraseña de Anemo para desbloquear el almacenamiento de Anemo</string>
+    <string name="password_input_message">Escriba su contraseña de Aer para desbloquear el almacenamiento de Aer</string>
     <string name="password_input_action">Desbloquear</string>
 
     <string name="password_set_title">Agregar protección con contraseña</string>
-    <string name="password_set_message">Establezca una contraseña para bloquear el acceso a Anemo Storage</string>
+    <string name="password_set_message">Establezca una contraseña para bloquear el acceso a Aer Storage</string>
     <string name="password_set_action">Configurar contraseña</string>
 
     <string name="password_change_title">Cambiar contraseña</string>
-    <string name="password_change_message">Cambiar contraseña para desbloquear Anemo Storage</string>
+    <string name="password_change_message">Cambiar contraseña para desbloquear Aer Storage</string>
     <string name="password_change_action">Cambiar</string>
     <string name="password_change_remove">Eliminar</string>
 
-    <string name="receiver_label">Importar a Anemo</string>
+    <string name="receiver_label">Importar a Aer</string>
 
     <string name="receiver_importing_message">Importando el archivo…</string>
-    <string name="receiver_importing_done_ok">Importado a Anemo</string>
+    <string name="receiver_importing_done_ok">Importado a Aer</string>
     <string name="receiver_importing_done_fail">No se pudo importar el archivo. Intentar otra vez</string>
 
     <string name="receiver_default_file_name">Archivo compartido</string>
 
     <string name="tile_title">Almacenamiento anemo</string>
 
-    <string name="tile_lock">Bloquear Anemo</string>
-    <string name="tile_unlock">Desbloquear Anemo</string>
+    <string name="tile_lock">Bloquear Aer</string>
+    <string name="tile_unlock">Desbloquear Aer</string>
     <string name="tile_status_locked">Ahora bloqueado</string>
     <string name="tile_status_unlocked">Ahora desbloqueado</string>
 
-    <string name="tile_auto_lock">El almacenamiento de Anemo se bloqueó automáticamente</string>
+    <string name="tile_auto_lock">El almacenamiento de Aer se bloqueó automáticamente</string>
 
     <string name="launcher_no_activity">No puedo encontrar la aplicación Archivos del sistema</string>
     <string name="shortcut_config_long">Configuración</string>

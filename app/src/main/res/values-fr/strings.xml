@@ -3,12 +3,12 @@
   ~ SPDX-License-Identifier: GPL-3.0-only
   -->
 <resources>
-    <string name="app_name">Anemo</string>
+    <string name="app_name">Aer</string>
 
     <string name="anemo_description">Stockage local privé</string>
-    <string name="anemo_info">Les fichiers stockés dans le stockage Anemo sont privés et les autres applications ne peuvent pas y accéder sans le consentement de l\'utilisateur.</string>
+    <string name="anemo_info">Les fichiers stockés dans le stockage Aer sont privés et les autres applications ne peuvent pas y accéder sans le consentement de l\'utilisateur.</string>
 
-    <string name="password_label">Mot de passe d\'Anemo</string>
+    <string name="password_label">Mot de passe d\'Aer</string>
 
     <string name="password_hint_field">Mot de passe</string>
     <string name="password_hint_repeat">Retaper pour confirmer</string>
@@ -18,34 +18,34 @@
     <string name="password_error_mismatch">Les mots de passe ne concordent pas</string>
     <string name="password_error_wrong">Mot de passe erroné</string>
 
-    <string name="password_input_message">Taper votre mot de passe pour déverrouiller le stockage Anemo</string>
+    <string name="password_input_message">Taper votre mot de passe pour déverrouiller le stockage Aer</string>
     <string name="password_input_action">Déverrouiller</string>
 
     <string name="password_set_title">Ajouter un mot de passe par sécurité</string>
-    <string name="password_set_message">Définissez un mot de passe pour verrouiller l\'accès au stockage Anemo.</string>
+    <string name="password_set_message">Définissez un mot de passe pour verrouiller l\'accès au stockage Aer.</string>
     <string name="password_set_action">Définir un mot de passe</string>
 
     <string name="password_change_title">Modifier le mot de passe</string>
-    <string name="password_change_message">Changez le mot de passe pour déverrouiller le stockage Anemo</string>
+    <string name="password_change_message">Changez le mot de passe pour déverrouiller le stockage Aer</string>
     <string name="password_change_action">Modifier</string>
     <string name="password_change_remove">Supprimer</string>
 
-    <string name="receiver_label">Importer dans Anemo</string>
+    <string name="receiver_label">Importer dans Aer</string>
 
     <string name="receiver_importing_message">Importation de ficher…</string>
-    <string name="receiver_importing_done_ok">Importé dans Anemo</string>
+    <string name="receiver_importing_done_ok">Importé dans Aer</string>
     <string name="receiver_importing_done_fail">Impossible d\'importer ficher. Réessayer</string>
 
     <string name="receiver_default_file_name">Ficher partagé</string>
 
-    <string name="tile_title">Stockage Anemo</string>
+    <string name="tile_title">Stockage Aer</string>
 
-    <string name="tile_lock">Cadenasser Anemo</string>
-    <string name="tile_unlock">Décadenasser Anemo</string>
+    <string name="tile_lock">Cadenasser Aer</string>
+    <string name="tile_unlock">Décadenasser Aer</string>
     <string name="tile_status_locked">Verrouillé</string>
     <string name="tile_status_unlocked">Déverrouillé</string>
 
-    <string name="tile_auto_lock">Le stockage Anemo a été verrouillé automatiquement</string>
+    <string name="tile_auto_lock">Le stockage Aer a été verrouillé automatiquement</string>
 
     <string name="launcher_no_activity">Impossible de trouver l\'application Fichiers du système</string>
     <string name="shortcut_config_long">Configuration</string>

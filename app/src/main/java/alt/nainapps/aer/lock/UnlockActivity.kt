@@ -2,7 +2,7 @@
  * Copyright (c) 2022 2bllw8
  * SPDX-License-Identifier: GPL-3.0-only
  */
-package exe.bbllw8.anemo.lock
+package alt.nainapps.aer.lock
 
 import android.app.Activity
 import android.content.DialogInterface
@@ -15,11 +15,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
-import exe.bbllw8.anemo.R
-import exe.bbllw8.anemo.config.ConfigurationActivity
-import exe.bbllw8.anemo.config.password.TextListener
-import exe.bbllw8.anemo.lock.LockStore.Companion.getInstance
-import exe.bbllw8.anemo.shell.LauncherActivity
+import alt.nainapps.aer.R
+import alt.nainapps.aer.config.ConfigurationActivity
+import alt.nainapps.aer.config.password.TextListener
+import alt.nainapps.aer.lock.LockStore.Companion.getInstance
+import alt.nainapps.aer.shell.LauncherActivity
 
 class UnlockActivity : Activity() {
     private var lockStore: LockStore? = null

@@ -2,7 +2,7 @@
  * Copyright (c) 2021 2bllw8
  * SPDX-License-Identifier: GPL-3.0-only
  */
-package exe.bbllw8.anemo.documents.home
+package alt.nainapps.aer.documents.home
 
 import android.content.Context
 import java.io.IOException
@@ -27,9 +27,9 @@ class HomeEnvironment private constructor(context: Context) {
     }
 
     companion object {
-        const val AUTHORITY: String = "exe.bbllw8.anemo.documents"
+        const val AUTHORITY: String = "alt.nainapps.aer.documents"
 
-        const val ROOT: String = "anemo"
+        const val ROOT: String = "aer"
         const val ROOT_DOC_ID: String = "root"
 
         @Volatile

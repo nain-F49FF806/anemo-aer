@@ -2,7 +2,7 @@
  * Copyright (c) 2021 2bllw8
  * SPDX-License-Identifier: GPL-3.0-only
  */
-package exe.bbllw8.anemo.documents.provider
+package alt.nainapps.aer.documents.provider
 
 import android.app.AuthenticationRequiredException
 import android.app.PendingIntent
@@ -19,11 +19,11 @@ import android.os.ParcelFileDescriptor
 import android.provider.DocumentsContract
 import android.provider.DocumentsContract.Root
 import android.util.Log
-import exe.bbllw8.anemo.R
-import exe.bbllw8.anemo.documents.home.HomeEnvironment
-import exe.bbllw8.anemo.documents.home.HomeEnvironment.Companion.getInstance
-import exe.bbllw8.anemo.lock.LockStore
-import exe.bbllw8.anemo.lock.UnlockActivity
+import alt.nainapps.aer.R
+import alt.nainapps.aer.documents.home.HomeEnvironment
+import alt.nainapps.aer.documents.home.HomeEnvironment.Companion.getInstance
+import alt.nainapps.aer.lock.LockStore
+import alt.nainapps.aer.lock.UnlockActivity
 import exe.bbllw8.either.Failure
 import exe.bbllw8.either.Success
 import exe.bbllw8.either.Try

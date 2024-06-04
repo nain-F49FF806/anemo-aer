@@ -2,7 +2,7 @@
  * Copyright (c) 2021 2bllw8
  * SPDX-License-Identifier: GPL-3.0-only
  */
-package exe.bbllw8.anemo.lock
+package alt.nainapps.aer.lock
 
 import android.content.ComponentName
 import android.content.Intent
@@ -12,8 +12,8 @@ import android.os.Build
 import android.os.IBinder
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
-import exe.bbllw8.anemo.R
-import exe.bbllw8.anemo.lock.LockStore.Companion.getInstance
+import alt.nainapps.aer.R
+import alt.nainapps.aer.lock.LockStore.Companion.getInstance
 import java.util.function.Consumer
 
 class LockTileService : TileService() {

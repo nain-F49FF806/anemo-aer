@@ -2,7 +2,7 @@
  * Copyright (c) 2022 2bllw8
  * SPDX-License-Identifier: GPL-3.0-only
  */
-package exe.bbllw8.anemo.config
+package alt.nainapps.aer.config
 
 import android.app.Activity
 import android.content.Intent
@@ -11,12 +11,12 @@ import android.view.View
 import android.widget.CompoundButton
 import android.widget.Switch
 import android.widget.TextView
-import exe.bbllw8.anemo.R
-import exe.bbllw8.anemo.config.password.ChangePasswordDialog
-import exe.bbllw8.anemo.config.password.SetPasswordDialog
-import exe.bbllw8.anemo.lock.LockStore
-import exe.bbllw8.anemo.lock.UnlockActivity
-import exe.bbllw8.anemo.shell.AnemoShell
+import alt.nainapps.aer.R
+import alt.nainapps.aer.config.password.ChangePasswordDialog
+import alt.nainapps.aer.config.password.SetPasswordDialog
+import alt.nainapps.aer.lock.LockStore
+import alt.nainapps.aer.lock.UnlockActivity
+import alt.nainapps.aer.shell.AnemoShell
 import java.util.function.Consumer
 
 class ConfigurationActivity : Activity() {
