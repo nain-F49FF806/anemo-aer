@@ -1,2 +1,5 @@
 /build
 /release
+
+local.properties
+.idea
