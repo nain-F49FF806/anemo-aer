@@ -29,7 +29,7 @@ class ConfigurationActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        lockStore = LockStore.getInstance(applicationContext)
+        lockStore = LockStore.getInstance(applicationContext)!!
         lockStore.addListener(onLockChanged)
 
         setContentView(R.layout.configuration)
@@ -61,9 +61,7 @@ class ConfigurationActivity : Activity() {
         val autoLockSwitch = findViewById<Switch>(R.id.configuration_auto_lock)
         autoLockSwitch.isChecked = lockStore.isAutoLockEnabled
         autoLockSwitch.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
-            lockStore.setAutoLockEnabled(
-                isChecked
-            )
+            lockStore.isAutoLockEnabled = isChecked
         }
 
         biometricSwitch = findViewById(R.id.configuration_biometric_unlock)

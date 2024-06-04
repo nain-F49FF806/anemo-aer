@@ -45,7 +45,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
         }
 
         val context = context
-        lockStore = LockStore.getInstance(context)
+        lockStore = context?.let { LockStore.getInstance(it) }
         lockStore!!.addListener(onLockChanged)
 
         return Try.from {
@@ -278,7 +278,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
         }
     }
 
-    private val onLockChanged = Consumer { isLocked: Boolean? ->
+    private val onLockChanged = Consumer { _: Boolean ->
         cr
             .notifyChange(DocumentsContract.buildRootsUri(HomeEnvironment.AUTHORITY), null)
     }

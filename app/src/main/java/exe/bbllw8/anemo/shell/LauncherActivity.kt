@@ -42,7 +42,7 @@ class LauncherActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (LockStore.getInstance(this).isLocked) {
+        if (LockStore.getInstance(this)?.isLocked == true) {
             startActivity(
                 Intent(this, UnlockActivity::class.java)
                     .putExtra(UnlockActivity.OPEN_AFTER_UNLOCK, true)
