@@ -5,6 +5,7 @@
 plugins {
     id 'com.android.application'
     id "com.diffplug.spotless" version "6.5.1"
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -59,10 +60,14 @@ android {
             }
         }
     }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 dependencies {
-    def androidxAnnotation = 'androidx.annotation:annotation:1.2.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    def androidxAnnotation = 'androidx.annotation:annotation:1.8.0'
     def eitherLib = 'io.github.2bllw8:either:3.4.0'
 
     implementation androidxAnnotation

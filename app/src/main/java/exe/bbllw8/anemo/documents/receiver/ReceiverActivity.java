@@ -62,6 +62,7 @@ public class ReceiverActivity extends Activity {
         }
 
         final Uri source = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        assert source != null;
         importRef.set(Optional.of(source));
 
         final Intent pickerIntent = new Intent(Intent.ACTION_CREATE_DOCUMENT).setType(type)
@@ -142,8 +143,10 @@ public class ReceiverActivity extends Activity {
             try (InputStream iStream = contentResolver.openInputStream(source)) {
                 try (OutputStream oStream = contentResolver.openOutputStream(destination)) {
                     final byte[] buffer = new byte[4096];
+                    assert iStream != null;
                     int read = iStream.read(buffer);
                     while (read > 0) {
+                        assert oStream != null;
                         oStream.write(buffer, 0, read);
                         read = iStream.read(buffer);
                     }
