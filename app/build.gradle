@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1717543000
+        versionCode 1717544000
         versionName "2024.06.05"
         applicationId 'alt.nainapps.aer'
     }
@@ -76,26 +76,6 @@ dependencies {
 
     implementation androidxAnnotation
     implementation eitherLib
-}
-
-spotless {
-    java {
-        target 'src/*/java/**/*.java'
-
-        importOrder('android', 'androidx', 'java', 'javax', '')
-        removeUnusedImports()
-
-        eclipse().configFile('code-format.xml')
-        endWithNewline()
-    }
-
-    format 'misc', {
-        target '**/*.gradle', '**/*.md', '**/.gitignore'
-
-        indentWithSpaces()
-        trimTrailingWhitespace()
-        endWithNewline()
-    }
 }
 
 afterEvaluate {
