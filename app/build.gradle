@@ -9,11 +9,10 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.ext.targetSdkVersion
-
+    compileSdk 33
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 26
+        targetSdkVersion 33
         versionCode 16
         versionName '2.6.0'
     }
@@ -95,10 +94,12 @@ spotless {
 }
 
 afterEvaluate {
-    def spotlessCheck = tasks.findByName('spotlessCheck')
+    def spotlessCheck = tasks.named('spotlessCheck')
     if (spotlessCheck) {
-        tasks.withType(JavaCompile) {
-            finalizedBy(spotlessCheck)
+        tasks.withType(JavaCompile).tap {
+            configureEach {
+                finalizedBy(spotlessCheck)
+            }
         }
     }
 }
