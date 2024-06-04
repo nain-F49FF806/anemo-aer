@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Use unix timestamp, precise to 1000 seconds (~16.7 mins) as versionCode epoch.
+# This lets us later generate 999 manual updates to a versionCode epoch if needed.
+# Note: This scheme will remain valid for use in Google Play up to value 2100000000,
+# or about year 2036 .
+
+# Function to get the current time epoch version code
+getCurrentTimeEpochVersionCode() {
+    # Get the current Unix timestamp in seconds
+    seconds=$(date +%s)
+    # Divide the seconds (integer division) by 1000 to get the epoch
+    epoch=$(($seconds / 1000))
+    # Multiply the epoch by 1000 to get the version code
+    epochVersionCode=$(($epoch * 1000))
+    echo $epochVersionCode
+}
+
+# Function to get the current date version name
+getCurrentDateVersionName() {
+    # Get the current date in the format yyyy.MM.dd
+    currentDateVersionName=$(date +"%Y.%m.%d")
+    echo $currentDateVersionName
+}
+
+# Check if SKIP_VERSION_AUTO_UPDATE is set
+if [ "$SKIP_VERSION_AUTO_UPDATE" = "true" ]; then
+    echo "Skipping automatic android app version update."
+    exit 0
+else
+    echo "Incrementing android app version pre-commit."
+    echo "Skip by setting environment variable SKIP_VERSION_AUTO_UPDATE=true."
+fi
+
+# Get the versionCode and versionName
+versionCode=$(getCurrentTimeEpochVersionCode)
+versionName=$(getCurrentDateVersionName)
+
+# Store the path to build.gradle.kts in a variable
+buildGradleFilePath="app/build.gradle"
+
+# Update the build.gradle.kts file with the new versionCode and versionName
+sed -i'' -e "s/versionCode .*/versionCode $versionCode/" "$buildGradleFilePath"
+sed -i'' -e "s/versionName .*/versionName \"$versionName\"/" "$buildGradleFilePath"
+
+# Add the updated build.gradle.kts file to the staging area
+git add "$buildGradleFilePath"
+
+# Proceed with the commit
+exit 0
