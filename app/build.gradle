@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1717544000
+        versionCode 1717545000
         versionName "2024.06.05"
         applicationId 'alt.nainapps.aer'
     }
