@@ -11,10 +11,11 @@ import java.nio.file.Path
 import kotlin.concurrent.Volatile
 
 class HomeEnvironment private constructor(context: Context) {
-    val baseDir: Path
+    val baseDir: Path =
+        context.getExternalFilesDir(null)?.toPath()?.resolve(ROOT) ?:
+            context.getDir(ROOT, Context.MODE_PRIVATE).toPath()
 
     init {
-        baseDir = context.filesDir.toPath().resolve(ROOT)
         if (!Files.exists(baseDir)) {
             Files.createDirectory(baseDir)
         } else if (!Files.isDirectory(baseDir)) {
