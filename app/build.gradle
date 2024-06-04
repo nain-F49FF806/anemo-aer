@@ -9,10 +9,10 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk targetSdkVersion
     defaultConfig {
-        minSdkVersion 26
-        targetSdkVersion 33
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 16
         versionName '2.6.0'
     }
@@ -22,8 +22,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
-        targetCompatibility rootProject.ext.targetCompatibilityVersion
+        sourceCompatibility sourceCompatibilityVersion
+        targetCompatibility targetCompatibilityVersion
     }
 
     dependenciesInfo {
@@ -62,6 +62,7 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    namespace 'exe.bbllw8.anemo'
 }
 
 dependencies {
