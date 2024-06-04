@@ -15,6 +15,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 16
         versionName '2.6.0'
+        applicationId 'alt.nainapps.aer'
     }
 
     buildFeatures {
@@ -48,14 +49,17 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
 
             if (useAnemoConfig) {
-                signingConfig = signingConfigs.named('anemo').get()
+                signingConfig signingConfigs.named('anemo').get()
             }
         }
         debug {
+            applicationIdSuffix '.debug'
+            signingConfig signingConfigs.debug
             if (useAnemoConfig) {
-                signingConfig = signingConfigs.named('anemo').get()
+                signingConfig signingConfigs.named('anemo').get()
             }
         }
     }
