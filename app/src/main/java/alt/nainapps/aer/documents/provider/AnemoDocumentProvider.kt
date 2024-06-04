@@ -67,7 +67,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
         super.shutdown()
     }
 
-    override fun queryRoots(projection: Array<String>): Cursor {
+    override fun queryRoots(projection: Array<String>?): Cursor {
         if (lockStore!!.isLocked) {
             return EmptyCursor()
         }
@@ -98,7 +98,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
 
     @Throws(FileNotFoundException::class)
     override fun queryChildDocuments(
-        parentDocumentId: String, projection: Array<String>,
+        parentDocumentId: String, projection: Array<String>?,
         sortOrder: String
     ): Cursor {
         if (lockStore!!.isLocked) {
@@ -121,7 +121,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
     }
 
     @Throws(FileNotFoundException::class)
-    override fun queryDocument(documentId: String, projection: Array<String>): Cursor {
+    override fun queryDocument(documentId: String, projection: Array<String>?): Cursor {
         return if (lockStore!!.isLocked) {
             EmptyCursor()
         } else {
@@ -284,7 +284,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
     }
 
     companion object {
-        private const val TAG = "AnemoDocumentProvider"
+        private const val TAG = "AerDocumentProvider"
 
         private val DEFAULT_ROOT_PROJECTION = arrayOf(
             Root.COLUMN_ROOT_ID, Root.COLUMN_FLAGS,
