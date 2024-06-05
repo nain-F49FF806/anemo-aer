@@ -11,9 +11,8 @@ import java.nio.file.Path
 import kotlin.concurrent.Volatile
 
 class HomeEnvironment private constructor(context: Context) {
-    val baseDir: Path =
-        context.getExternalFilesDir(null)?.toPath()?.resolve(ROOT) ?:
-            context.getDir(ROOT, Context.MODE_PRIVATE).toPath()
+    val baseDir: Path = context.getExternalFilesDir(null)?.toPath() ?:
+        context.filesDir.toPath() // internal
 
     init {
         if (!Files.exists(baseDir)) {
@@ -29,9 +28,8 @@ class HomeEnvironment private constructor(context: Context) {
 
     companion object {
         const val AUTHORITY: String = "alt.nainapps.aer.documents"
-
-        const val ROOT: String = "aer"
-        const val ROOT_DOC_ID: String = "root"
+        const val ROOT: String = "alt.nainapps.aer.documents.root"
+        const val ROOT_DOC_ID: String = "aer_root"
 
         @Volatile
         private var instance: HomeEnvironment? = null
