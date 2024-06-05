@@ -1,9 +1,14 @@
 # Aer - fork of [Anemo]
 
+> [!NOTE]  
+> - This fork focuses on supporting app's *private location* on external storage (~ SD card)  
+> - If no external storage exists it'll gracefully fall back to using internal storage  
+> - Anemo and Aer can be used side by side for maximal profit
+
 [Anemo]: (https://github.com/2bllw8/anemo)
 
-[![Anemo CI](https://github.com/nain-F49FF806/anemo-aeolus/actions/workflows/main.yml/badge.svg)](https://github.com/nain-F49FF806/anemo-aeolus/actions/workflows/main.yml)
-[![Latest release](https://img.shields.io/github/v/release/2bllw8/anemo?color=red&label=download)](https://github.com/nain-F49FF806/anemo-aeolus/releases/latest)
+[![Aer CI](https://github.com/nain-F49FF806/anemo-aeolus/actions/workflows/main.yml/badge.svg)](https://github.com/nain-F49FF806/anemo-aeolus/actions/workflows/main.yml)
+[![Latest release](https://img.shields.io/github/v/release/nain-F49FF806/anemo-aeolus?label=download)](https://github.com/nain-F49FF806/anemo-aeolus/releases/latest)
 
 Aer is a private local storage utility application for android.
 Instead of being a stand-alone file manager user interface, it hooks into various components of
@@ -24,12 +29,13 @@ Moreover it provides ways for the user to export contents from other apps and sa
 
 ## Download
 
-Get the apk from [latest](https://github.com/nain-F49FF806/anemo-aeolus/releases/latest) release tag or
-from F-Droid.
+Get the Aer apk from github [releases](https://github.com/nain-F49FF806/anemo-aeolus/releases)
 
+<!--- 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
      height="60">](https://f-droid.org/packages/exe.bbllw8.anemo/)
+-->
 
 ## Build
 
@@ -37,19 +43,16 @@ With Gradle:
 - `./gradlew :app:assembleRelease`
 - `./gradlew :app:assembleDebug`
 
-With AOSP / LineageOS:
-- `mka anemo`
-
 ## Get help
 
 Open an discussion [on github](https://github.com/2bllw8/anemo/discussions/new?category=Q-A)
 
 ## Contributions
 
-**Every contributions, including ideas, feature requests, bug reports and Pull Requests are welcome!**
+**Every contributions, including ideas, bug reports and Pull Requests are welcome!**
 
 - **Solve bug(s)**, add **feature(s)** or **translate** Aer to your native language by making a **[pull request](https://help.github.com/articles/about-pull-requests/)**
-- You have an idea for improvement or a new feature? Open a **[feature request](https://github.com/2bllw8/anemo/issues/new?assignees=&labels=enhancement&template=feature_request.yml&title=[Feature+request]+)**
+- You have an idea for improvement or a new feature? Open a feature request **[upstream](https://github.com/2bllw8/anemo/issues/new?assignees=&labels=enhancement&template=feature_request.yml&title=[Feature+request]+)** or specifically **[for Aer](https://github.com/nain-F49FF806/anemo-aeolus/issues/new?assignees=&labels=enhancement&template=feature_request.yml&title=[Feature+request]+)**
 - You faced a bug, let us know by opening a **[bug report](https://github.com/nain-F49FF806/anemo-aeolus/issues/new?assignees=&labels=bug&template=bug_report.yml&title=%5BBug%5D+)**
 
 ## License
