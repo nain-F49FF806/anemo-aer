@@ -108,7 +108,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
         val c = super.queryChildDocuments(parentDocumentId, projection, sortOrder)
         if (showInfo && HomeEnvironment.ROOT_DOC_ID == parentDocumentId) {
             // Hide from now on
-            showInfo = false
+            //showInfo = false
             // Show info in root dir
             val extras = Bundle()
             extras.putCharSequence(
