@@ -1,6 +1,7 @@
 name: Release
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - '*'
@@ -57,8 +58,12 @@ jobs:
           name: mappings
           path: "app/build/outputs/mapping/release"
       - name: Create release
-        uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v3
         with:
           artifacts: "app/build/outputs/apk/release/app-release.apk"
           draft: true
+          allowUpdates: true
+          omitDraftDuringUpdate: true
+          omitBodyDuringUpdate: true
+          omitNameDuringUpdate: true
           token: ${{ secrets.GITHUB_TOKEN }}
