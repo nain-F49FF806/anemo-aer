@@ -5,13 +5,15 @@
 package alt.nainapps.aer.documents.home
 
 import android.content.Context
+import android.os.Environment
+import java.io.File
 import java.io.IOException
 import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.concurrent.Volatile
 
 class HomeEnvironment private constructor(context: Context) {
-    val baseDir: Path = context.getExternalFilesDir(null)?.toPath() ?:
+    val baseDir: Path = getSelectExternalFilesDir(context)?.toPath() ?:
         context.filesDir.toPath() // internal
 
     init {
@@ -24,6 +26,20 @@ class HomeEnvironment private constructor(context: Context) {
 
     fun isRoot(path: Path): Boolean {
         return baseDir == path
+    }
+
+    private fun getSelectExternalFilesDir(context: Context): File? {
+        val externalFilesDirs = context.getExternalFilesDirs(null)
+        // The first few (in forward order) may be on primary storage,
+        // so we traverse in reverse order to find first available externalFilesDir
+        for (i in externalFilesDirs.indices.reversed()) {
+            if (externalFilesDirs[i]!= null)  {
+                if (Environment.getExternalStorageState(externalFilesDirs[i]) == Environment.MEDIA_MOUNTED) {
+                    return externalFilesDirs[i]
+                }
+            }
+        }
+        return null
     }
 
     companion object {
