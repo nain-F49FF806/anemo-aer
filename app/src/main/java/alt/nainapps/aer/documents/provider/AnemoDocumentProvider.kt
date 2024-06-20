@@ -33,7 +33,7 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import java.util.function.Consumer
 
-class AnemoDocumentProvider : FileSystemProvider() {
+abstract class AnemoDocumentProvider : FileSystemProvider() {
     private var homeEnvironment: HomeEnvironment? = null
     private var lockStore: LockStore? = null
 
@@ -67,7 +67,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
         super.shutdown()
     }
 
-    override fun queryRoots(projection: Array<String>?): Cursor {
+    override fun queryRoots(projection: Array<String?>): Cursor {
         if (lockStore!!.isLocked) {
             return EmptyCursor()
         }
@@ -98,7 +98,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
 
     @Throws(FileNotFoundException::class)
     override fun queryChildDocuments(
-        parentDocumentId: String, projection: Array<String>?,
+        parentDocumentId: String, projection: Array<String?>,
         sortOrder: String
     ): Cursor {
         if (lockStore!!.isLocked) {
@@ -121,7 +121,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
     }
 
     @Throws(FileNotFoundException::class)
-    override fun queryDocument(documentId: String, projection: Array<String>?): Cursor {
+    override fun queryDocument(documentId: String, projection: Array<String?>): Cursor {
         return if (lockStore!!.isLocked) {
             EmptyCursor()
         } else {
@@ -132,7 +132,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
     @Throws(FileNotFoundException::class)
     override fun querySearchDocuments(
         rootId: String,
-        projection: Array<String>?,
+        projection: Array<String?>?,
         queryArgs: Bundle
     ): Cursor? {
         return if (lockStore!!.isLocked) {
@@ -214,15 +214,18 @@ class AnemoDocumentProvider : FileSystemProvider() {
         }
     }
 
-    override fun buildNotificationUri(docId: String): Uri {
+    override fun buildNotificationUri(docId: String?): Uri {
         return DocumentsContract.buildChildDocumentsUri(HomeEnvironment.AUTHORITY, docId)
     }
 
-    override fun getPathForId(docId: String): Try<Path> {
+    override fun getPathForId(docId: String?): Try<Path> {
         val baseDir = homeEnvironment!!.baseDir
         if (HomeEnvironment.ROOT_DOC_ID == docId) {
             return Success(baseDir)
         } else {
+            if (docId == null) {
+                return Failure(FileNotFoundException("No root for $docId"))
+            }
             val splitIndex = docId.indexOf('/', 1)
             if (splitIndex < 0) {
                 return Failure(FileNotFoundException("No root for $docId"))
@@ -240,7 +243,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
         }
     }
 
-    override fun getDocIdForPath(path: Path): String {
+    override fun getDocIdForPath(path: Path?): String {
         val rootPath = homeEnvironment!!.baseDir
         return if (rootPath == path) {
             HomeEnvironment.ROOT_DOC_ID
@@ -250,15 +253,15 @@ class AnemoDocumentProvider : FileSystemProvider() {
         }
     }
 
-    override fun isNotEssential(path: Path): Boolean {
-        return !homeEnvironment!!.isRoot(path)
+    override fun isNotEssential(path: Path?): Boolean {
+        return !homeEnvironment!!.isRoot(path!!)
     }
 
-    override fun onDocIdChanged(docId: String) {
+    override fun onDocIdChanged(docId: String?) {
         // no-op
     }
 
-    override fun onDocIdDeleted(docId: String) {
+    override fun onDocIdDeleted(docId: String?) {
         // no-op
     }
 
@@ -280,7 +283,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
 
     private val onLockChanged = Consumer { _: Boolean ->
         cr
-            .notifyChange(DocumentsContract.buildRootsUri(HomeEnvironment.AUTHORITY), null)
+            ?.notifyChange(DocumentsContract.buildRootsUri(HomeEnvironment.AUTHORITY), null)
     }
 
     companion object {
@@ -291,7 +294,7 @@ class AnemoDocumentProvider : FileSystemProvider() {
             Root.COLUMN_ICON, Root.COLUMN_TITLE, Root.COLUMN_DOCUMENT_ID,
         )
 
-        private fun resolveRootProjection(projection: Array<String>?): Array<String> {
+        private fun resolveRootProjection(projection: Array<String?>?): Array<out String?> {
             return projection ?: DEFAULT_ROOT_PROJECTION
         }
     }
