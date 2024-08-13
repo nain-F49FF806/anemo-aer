@@ -1,8 +1,8 @@
 [versions]
-annotation = "1.8.0"
+annotation = "1.8.2"
 coreKtx = "1.13.1"
 eitherLib = "3.4.0"
-agp = "8.5.0"
+agp = "8.5.2"
 kotlin = "2.0.0"
 
 
