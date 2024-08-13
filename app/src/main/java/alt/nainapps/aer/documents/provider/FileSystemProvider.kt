@@ -43,7 +43,6 @@ import java.nio.file.Path
 import java.nio.file.SimpleFileVisitor
 import java.nio.file.attribute.BasicFileAttributes
 import java.nio.file.attribute.FileTime
-import java.util.Arrays
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -54,7 +53,6 @@ import java.util.concurrent.atomic.AtomicInteger
  *
  * Based on `com.android.internal.content.FileSystemProvider`.
  */
-@SuppressLint("ExifInterface")
 abstract class FileSystemProvider : DocumentsProvider() {
     private val observers = ArrayMap<Path, DirectoryObserver>()
 
@@ -80,8 +78,8 @@ abstract class FileSystemProvider : DocumentsProvider() {
                             file: Path,
                             attrs: BasicFileAttributes
                         ): FileVisitResult {
-                            treeSize.value += attrs.size();
-                            treeCount.value += 1 ;
+                            treeSize.value += attrs.size()
+                            treeCount.value += 1
                             return FileVisitResult.CONTINUE
                         }
                     })
@@ -403,7 +401,7 @@ abstract class FileSystemProvider : DocumentsProvider() {
         projection: Array<String?>?,
         queryArgs: Bundle
     ): Cursor? {
-        val result = getPathForId(rootId).filter { `$`: Path? -> Build.VERSION.SDK_INT > 29 }
+        val result = getPathForId(rootId).filter { _: Path? -> Build.VERSION.SDK_INT > 29 }
             .map { path: Path? -> querySearchDocuments(path, projection, queryArgs) }
         if (result.isFailure) {
             throw FileNotFoundException()
@@ -603,7 +601,7 @@ abstract class FileSystemProvider : DocumentsProvider() {
             DocumentsContract.QUERY_ARG_DISPLAY_NAME,
             ""
         )
-        if (!argDisplayName.isEmpty()) {
+        if (argDisplayName.isNotEmpty()) {
             if (!fileName.contains(argDisplayName.lowercase())) {
                 return false
             }
@@ -624,7 +622,7 @@ abstract class FileSystemProvider : DocumentsProvider() {
 
         val argMimeTypes = queryArgs
             .getStringArray(DocumentsContract.QUERY_ARG_MIME_TYPES)
-        if (argMimeTypes != null && argMimeTypes.size > 0) {
+        if (!argMimeTypes.isNullOrEmpty()) {
             val fileMimeType: String?
             if (Files.isDirectory(path)) {
                 fileMimeType = DocumentsContract.Document.MIME_TYPE_DIR
