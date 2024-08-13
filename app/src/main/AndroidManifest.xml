@@ -20,6 +20,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         tools:targetApi="s">
+        <activity
+            android:name=".config.StoragePrefActivity"
+            android:exported="false"
+            android:label="@string/title_activity_storage_pref"
+            android:theme="@style/Theme.Anemoaer" />
         <!-- Shell -->
         <activity
             android:name=".shell.LauncherActivity"

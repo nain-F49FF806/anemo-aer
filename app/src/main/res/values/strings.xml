@@ -63,4 +63,5 @@
     <string name="configuration_storage_unlock">Unlock storage access</string>
     <string name="configuration_storage_unlock_biometric">Allow storage unlock with biometric access</string>
     <string name="configuration_storage_lock_auto">Automatically lock access after 15 minutes</string>
+    <string name="title_activity_storage_pref">StoragePrefActivity</string>
 </resources>
