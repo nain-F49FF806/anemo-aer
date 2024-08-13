@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 plugins {
-    id("com.android.application")
-    id("com.diffplug.spotless") version "6.5.1"
+    alias(libs.plugins.android.application)
     id("org.jetbrains.kotlin.android")
+    id("com.diffplug.spotless") version "6.5.1"
 }
 
 android {
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdk = rootProject.extra["minSdkVersion"] as Int
         targetSdk = rootProject.extra["targetSdkVersion"] as Int
-        versionCode = 1723569000
+        versionCode = 1723573000
         versionName = "2024.08.13"
         applicationId = "alt.nainapps.aer"
     }
