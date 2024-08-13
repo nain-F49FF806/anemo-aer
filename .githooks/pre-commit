@@ -37,7 +37,7 @@ versionCode=$(getCurrentTimeEpochVersionCode)
 versionName=$(getCurrentDateVersionName)
 
 # Store the path to build.gradle.kts in a variable
-buildGradleFilePath="app/build.gradle"
+buildGradleFilePath="app/build.gradle.kts"
 
 # Update the build.gradle.kts file with the new versionCode and versionName
 sed -i'' -e "s/versionCode .*/versionCode $versionCode/" "$buildGradleFilePath"
