@@ -129,6 +129,7 @@ abstract class FileSystemProvider : DocumentsProvider() {
 
     @Throws(FileNotFoundException::class)
     override fun copyDocument(sourceDocumentId: String, targetParentDocumentId: String): String {
+        Log.d(TAG, "${getPathForId(sourceDocumentId)}")
         val result = getPathForId(sourceDocumentId)
             .flatMap { source: Path ->
                 getPathForId(targetParentDocumentId).map<String> { parent: Path? ->
@@ -136,6 +137,7 @@ abstract class FileSystemProvider : DocumentsProvider() {
                     val target = buildUniquePath(
                         parent!!, fileName
                     )
+                    Log.d(TAG, "Copying document: $fileName from $source to $parent")
 
                     if (Files.isDirectory(source)) {
                         // Recursive copy
@@ -145,6 +147,7 @@ abstract class FileSystemProvider : DocumentsProvider() {
                                 dir: Path,
                                 attrs: BasicFileAttributes
                             ): FileVisitResult {
+                                Log.d(TAG, "Creating directories: ${target.resolve(dir.relativize(source))}")
                                 Files.createDirectories(target.resolve(dir.relativize(source)))
                                 return FileVisitResult.CONTINUE
                             }
@@ -160,6 +163,7 @@ abstract class FileSystemProvider : DocumentsProvider() {
                         })
                     } else {
                         // Simple copy
+                        Log.d(TAG, "File.copy document:  $source to $target")
                         Files.copy(source, target)
                     }
 
@@ -287,7 +291,7 @@ abstract class FileSystemProvider : DocumentsProvider() {
     }
 
     @Throws(FileNotFoundException::class)
-    override fun queryDocument(documentId: String, projection: Array<String?>): Cursor {
+    override fun queryDocument(documentId: String, projection: Array<String?>?): Cursor {
         val result = MatrixCursor(resolveProjection(projection))
         includePath(result, documentId)
         return result
@@ -295,8 +299,8 @@ abstract class FileSystemProvider : DocumentsProvider() {
 
     @Throws(FileNotFoundException::class)
     override fun queryChildDocuments(
-        parentDocumentId: String, projection: Array<String?>,
-        sortOrder: String
+        parentDocumentId: String, projection: Array<String?>?,
+        sortOrder: String?
     ): Cursor {
         val parentTry = getPathForId(parentDocumentId)
         if (parentTry.isFailure) {
@@ -328,10 +332,11 @@ abstract class FileSystemProvider : DocumentsProvider() {
             childDocumentId.substring(parentDocumentId.length)
         }
 
-        val segments = Arrays.asList(*pathStr.split("/".toRegex()).dropLastWhile { it.isEmpty() }
+        val segments = listOf(*pathStr.split("/".toRegex()).dropLastWhile { it.isEmpty() }
             .toTypedArray())
         return DocumentsContract.Path(parentDocumentId, segments)
     }
+
 
     @Throws(FileNotFoundException::class)
     override fun getDocumentType(documentId: String): String {

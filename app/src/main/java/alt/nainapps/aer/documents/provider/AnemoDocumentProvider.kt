@@ -33,7 +33,7 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import java.util.function.Consumer
 
-abstract class AnemoDocumentProvider : FileSystemProvider() {
+class AnemoDocumentProvider : FileSystemProvider() {
     private var homeEnvironment: HomeEnvironment? = null
     private var lockStore: LockStore? = null
 
@@ -67,7 +67,7 @@ abstract class AnemoDocumentProvider : FileSystemProvider() {
         super.shutdown()
     }
 
-    override fun queryRoots(projection: Array<String?>): Cursor {
+    override fun queryRoots(projection: Array<String?>?): Cursor {
         if (lockStore!!.isLocked) {
             return EmptyCursor()
         }
@@ -98,8 +98,8 @@ abstract class AnemoDocumentProvider : FileSystemProvider() {
 
     @Throws(FileNotFoundException::class)
     override fun queryChildDocuments(
-        parentDocumentId: String, projection: Array<String?>,
-        sortOrder: String
+        parentDocumentId: String, projection: Array<String?>?,
+        sortOrder: String?
     ): Cursor {
         if (lockStore!!.isLocked) {
             return EmptyCursor()
@@ -121,7 +121,7 @@ abstract class AnemoDocumentProvider : FileSystemProvider() {
     }
 
     @Throws(FileNotFoundException::class)
-    override fun queryDocument(documentId: String, projection: Array<String?>): Cursor {
+    override fun queryDocument(documentId: String, projection: Array<String?>?): Cursor {
         return if (lockStore!!.isLocked) {
             EmptyCursor()
         } else {
@@ -189,7 +189,7 @@ abstract class AnemoDocumentProvider : FileSystemProvider() {
         deleteDocument(documentId)
     }
 
-    @Throws(FileNotFoundException::class)
+//    @Throws(FileNotFoundException::class)
     override fun copyDocument(sourceDocumentId: String, targetParentDocumentId: String): String {
         assertUnlocked()
         return super.copyDocument(sourceDocumentId, targetParentDocumentId)

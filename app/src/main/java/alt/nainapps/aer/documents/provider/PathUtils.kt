@@ -153,7 +153,7 @@ object PathUtils {
         Files.walkFileTree(path, object : SimpleFileVisitor<Path>() {
             @Throws(IOException::class)
             override fun postVisitDirectory(dir: Path, exc: IOException): FileVisitResult {
-                Files.delete(dir)
+                Files.deleteIfExists(dir)
                 return FileVisitResult.CONTINUE
             }
 
