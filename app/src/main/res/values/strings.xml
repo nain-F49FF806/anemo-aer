@@ -64,4 +64,7 @@
     <string name="configuration_storage_unlock_biometric">Allow storage unlock with biometric access</string>
     <string name="configuration_storage_lock_auto">Automatically lock access after 15 minutes</string>
     <string name="title_activity_storage_pref">StoragePrefActivity</string>
+    <string name="shortcut_storageconfig_long">Storage Backend Configuration</string>
+    <string name="shortcut_storageconfig_short">Storage Config</string>
+    <string name="shortcut_storageconfig_disabled">Storage Config (Disabled)</string>
 </resources>

@@ -16,4 +16,17 @@
             android:targetClass="alt.nainapps.aer.config.ConfigurationActivity"
             android:targetPackage="alt.nainapps.aer" />
     </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_configuration"
+        android:shortcutDisabledMessage="@string/shortcut_storageconfig_disabled"
+        android:shortcutId="storageconfig"
+        android:shortcutLongLabel="@string/shortcut_storageconfig_long"
+        android:shortcutShortLabel="@string/shortcut_storageconfig_short">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="alt.nainapps.aer.config.StorageConfigActivityKt"
+            android:targetPackage="alt.nainapps.aer" />
+    </shortcut>
 </shortcuts>
