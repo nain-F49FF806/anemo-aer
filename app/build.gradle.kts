@@ -69,12 +69,9 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
-    val androidxAnnotation = "androidx.annotation:annotation:1.8.0"
-    val eitherLib = "io.github.2bllw8:either:3.4.0"
-
-    implementation(androidxAnnotation)
-    implementation(eitherLib)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.annotation)
+    implementation(libs.eitherLib)
 }
 
 afterEvaluate {
