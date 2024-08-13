@@ -22,4 +22,4 @@ pluginManagement {
     }
 }
 
-include (":app")
+include(":app")

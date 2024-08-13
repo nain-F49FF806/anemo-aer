@@ -4,6 +4,7 @@ coreKtx = "1.13.1"
 eitherLib = "3.4.0"
 agp = "8.5.2"
 kotlin = "2.0.0"
+exifinterface = "1.3.7"
 
 
 [libraries]
@@ -12,6 +13,7 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx"
 eitherLib = { module = "io.github.2bllw8:either", version.ref = "eitherLib" }
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+androidx-exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "exifinterface" }
 
 [plugins]
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

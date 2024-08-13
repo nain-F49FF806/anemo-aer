@@ -13,7 +13,7 @@ android {
     defaultConfig {
         minSdk = rootProject.extra["minSdkVersion"] as Int
         targetSdk = rootProject.extra["targetSdkVersion"] as Int
-        versionCode = 1723573000
+        versionCode = 1723574000
         versionName = "2024.08.13"
         applicationId = "alt.nainapps.aer"
     }
@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.annotation)
     implementation(libs.eitherLib)
+    implementation(libs.androidx.exifinterface)
 }
 
 afterEvaluate {
@@ -82,4 +83,3 @@ afterEvaluate {
         }
     }
 }
-
