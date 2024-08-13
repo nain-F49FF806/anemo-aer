@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <queries>
         <package android:name="com.android.documentsui" />
@@ -21,10 +23,15 @@
         android:supportsRtl="true"
         tools:targetApi="s">
         <activity
-            android:name=".config.StoragePrefActivity"
+            android:name=".config.StorageConfigActivity"
             android:exported="false"
             android:label="@string/title_activity_storage_pref"
-            android:theme="@style/Theme.Anemoaer" />
+            android:theme="@style/Theme.Anemoaer">
+            <intent-filter>
+                <action android:name="alt.nainapps.aer.STORAGE_CONFIG" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!-- Shell -->
         <activity
             android:name=".shell.LauncherActivity"

@@ -25,8 +25,8 @@
         android:shortcutShortLabel="@string/shortcut_storageconfig_short">
 
         <intent
-            android:action="android.intent.action.VIEW"
+            android:action="alt.nainapps.aer.STORAGE_CONFIG"
             android:targetClass="alt.nainapps.aer.config.StorageConfigActivityKt"
-            android:targetPackage="alt.nainapps.aer" />
+             />
     </shortcut>
 </shortcuts>
