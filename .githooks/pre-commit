@@ -40,8 +40,8 @@ versionName=$(getCurrentDateVersionName)
 buildGradleFilePath="app/build.gradle.kts"
 
 # Update the build.gradle.kts file with the new versionCode and versionName
-sed -i'' -e "s/versionCode .*/versionCode $versionCode/" "$buildGradleFilePath"
-sed -i'' -e "s/versionName .*/versionName \"$versionName\"/" "$buildGradleFilePath"
+sed -i'' -e "s/versionCode .*/versionCode = $versionCode/" "$buildGradleFilePath"
+sed -i'' -e "s/versionName .*/versionName = \"$versionName\"/" "$buildGradleFilePath"
 
 # Add the updated build.gradle.kts file to the staging area
 git add "$buildGradleFilePath"

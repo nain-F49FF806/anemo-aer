@@ -13,8 +13,8 @@ android {
     defaultConfig {
         minSdk = rootProject.extra["minSdkVersion"] as Int
         targetSdk = rootProject.extra["targetSdkVersion"] as Int
-        versionCode 1723569000
-        versionName "2024.08.13"
+        versionCode = 1723569000
+        versionName = "2024.08.13"
         applicationId = "alt.nainapps.aer"
     }
 
