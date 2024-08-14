@@ -4,6 +4,12 @@
  */
 package alt.nainapps.aer.config
 
+import alt.nainapps.aer.R
+import alt.nainapps.aer.config.password.ChangePasswordDialog
+import alt.nainapps.aer.config.password.SetPasswordDialog
+import alt.nainapps.aer.lock.LockStore
+import alt.nainapps.aer.lock.UnlockActivity
+import alt.nainapps.aer.shell.AnemoShell
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -11,12 +17,6 @@ import android.view.View
 import android.widget.CompoundButton
 import android.widget.Switch
 import android.widget.TextView
-import alt.nainapps.aer.R
-import alt.nainapps.aer.config.password.ChangePasswordDialog
-import alt.nainapps.aer.config.password.SetPasswordDialog
-import alt.nainapps.aer.lock.LockStore
-import alt.nainapps.aer.lock.UnlockActivity
-import alt.nainapps.aer.shell.AnemoShell
 import java.util.function.Consumer
 
 class ConfigurationActivity : Activity() {
@@ -40,15 +40,19 @@ class ConfigurationActivity : Activity() {
         shortcutSwitch.isChecked = AnemoShell.isEnabled(application)
         shortcutSwitch.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             AnemoShell.setEnabled(
-                application, isChecked
+                application,
+                isChecked,
             )
         }
 
         changeLockView = findViewById(R.id.configuration_lock)
         changeLockView!!.setText(
             if (lockStore.isLocked
-            ) R.string.configuration_storage_unlock
-            else R.string.configuration_storage_lock
+            ) {
+                R.string.configuration_storage_unlock
+            } else {
+                R.string.configuration_storage_lock
+            },
         )
         changeLockView!!.setOnClickListener {
             if (lockStore.isLocked) {
@@ -84,7 +88,8 @@ class ConfigurationActivity : Activity() {
             passwordSetView!!.setText(R.string.configuration_password_change)
             passwordSetView!!.setOnClickListener {
                 ChangePasswordDialog(
-                    this, lockStore
+                    this,
+                    lockStore,
                 ) { this.setupPasswordViews() }
                     .show()
             }
@@ -93,7 +98,7 @@ class ConfigurationActivity : Activity() {
             passwordSetView!!.setOnClickListener {
                 SetPasswordDialog(
                     this,
-                    lockStore
+                    lockStore,
                 ) { this.setupPasswordViews() }.show()
             }
         }
@@ -102,13 +107,17 @@ class ConfigurationActivity : Activity() {
         biometricSwitch!!.isEnabled = enableViews
     }
 
-    private val onLockChanged = Consumer { isLocked: Boolean ->
-        passwordSetView!!.isEnabled = !isLocked
-        biometricSwitch!!.isEnabled = !isLocked
-        changeLockView!!.setText(
-            if (isLocked
-            ) R.string.configuration_storage_unlock
-            else R.string.configuration_storage_lock
-        )
-    }
+    private val onLockChanged =
+        Consumer { isLocked: Boolean ->
+            passwordSetView!!.isEnabled = !isLocked
+            biometricSwitch!!.isEnabled = !isLocked
+            changeLockView!!.setText(
+                if (isLocked
+                ) {
+                    R.string.configuration_storage_unlock
+                } else {
+                    R.string.configuration_storage_lock
+                },
+            )
+        }
 }

@@ -12,9 +12,12 @@ import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.concurrent.Volatile
 
-class HomeEnvironment private constructor(context: Context) {
-    val baseDir: Path = getSelectExternalFilesDir(context)?.toPath() ?:
-        context.filesDir.toPath() // internal
+class HomeEnvironment private constructor(
+    context: Context,
+) {
+    val baseDir: Path =
+        getSelectExternalFilesDir(context)?.toPath()
+            ?: context.filesDir.toPath() // internal
 
     init {
         if (!Files.exists(baseDir)) {
@@ -24,16 +27,14 @@ class HomeEnvironment private constructor(context: Context) {
         }
     }
 
-    fun isRoot(path: Path): Boolean {
-        return baseDir == path
-    }
+    fun isRoot(path: Path): Boolean = baseDir == path
 
     private fun getSelectExternalFilesDir(context: Context): File? {
         val externalFilesDirs = context.getExternalFilesDirs(null)
         // The first few (in forward order) may be on primary storage,
         // so we traverse in reverse order to find first available externalFilesDir
         for (i in externalFilesDirs.indices.reversed()) {
-            if (externalFilesDirs[i]!= null)  {
+            if (externalFilesDirs[i] != null) {
                 if (Environment.getExternalStorageState(externalFilesDirs[i]) == Environment.MEDIA_MOUNTED) {
                     return externalFilesDirs[i]
                 }
