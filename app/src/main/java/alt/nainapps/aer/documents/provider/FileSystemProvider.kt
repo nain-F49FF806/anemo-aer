@@ -556,15 +556,20 @@ abstract class FileSystemProvider : DocumentsProvider() {
                 if (DocumentsContract.Document.MIME_TYPE_DIR == mimeType) {
                     flags = flags or DocumentsContract.Document.FLAG_DIR_SUPPORTS_CREATE
                     if (isNotEssential(path)) {
+                        flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_WRITE
                         flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_DELETE
                         flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_RENAME
+                        flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_COPY
                         flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_MOVE
+                        Log.d(TAG, "Flag $flags for: $path")
                     }
                 } else {
                     flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_WRITE
                     flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_DELETE
                     flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_RENAME
+                    flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_COPY
                     flags = flags or DocumentsContract.Document.FLAG_SUPPORTS_MOVE
+                    Log.d(TAG, "Flag $flags for: $path")
                 }
             }
 
