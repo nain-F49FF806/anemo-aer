@@ -14,8 +14,8 @@ android {
     defaultConfig {
         minSdk = rootProject.extra["minSdkVersion"] as Int
         targetSdk = rootProject.extra["targetSdkVersion"] as Int
-        versionCode = 1723649000
-        versionName = "2024.08.14"
+        versionCode = 1727709000
+        versionName = "2024.09.30"
         applicationId = "alt.nainapps.aer"
         vectorDrawables {
             useSupportLibrary = true
