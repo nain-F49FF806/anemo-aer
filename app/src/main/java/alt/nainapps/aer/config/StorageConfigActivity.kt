@@ -3,9 +3,11 @@ package alt.nainapps.aer.config
 import alt.nainapps.aer.config.ui.theme.AnemoaerTheme
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Environment
 import android.os.StatFs
+import android.preference.PreferenceManager.getDefaultSharedPreferences
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -35,6 +37,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,11 +47,13 @@ import sh.calvin.reorderable.rememberReorderableLazyListState
 import java.io.File
 
 class StorageConfigActivity : ComponentActivity() {
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
+        // At the top level of your kotlin file:
+        val sharedPrefs = getDefaultSharedPreferences(this)
         setContent {
             AnemoaerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize(),
@@ -60,13 +65,26 @@ class StorageConfigActivity : ComponentActivity() {
                     )
                 }) { innerPadding ->
                     val storageInfos by rememberSaveable { mutableStateOf(fetchExternalStorageDirectories(this.applicationContext)) }
+                    var selectedStorageDir by rememberSaveable { mutableStateOf(getPreferredStorageDir(sharedPrefs)) }
                     Column (Modifier.padding(paddingValues = innerPadding)) {
+                        selectedStorageDir?.let {
+                            Card(modifier = Modifier.padding(8.dp)) {
+                                Text(
+                                    text = "Selected: $it",
+                                    modifier = Modifier.padding(8.dp)
+                                )
+                            }
+                        }
+
                         Text(
                             text = "Drag to reorder:",
                             fontStyle = FontStyle.Italic,
                             modifier = Modifier.padding(8.dp)
                         )
-                        StorageInfoListReorderable(storageInfos)
+
+                        StorageInfoListReorderable(storageInfos, sharedPrefs) {
+                            selected -> selectedStorageDir = selected
+                        }
                     }
                 }
             }
@@ -94,14 +112,18 @@ fun StorageInfoList(storageInfos: List<StorageInfo>) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun StorageInfoListReorderable(storageInfos: List<StorageInfo>) {
+fun StorageInfoListReorderable(storageInfos: List<StorageInfo>, sharedPrefs: SharedPreferences,
+                               onFreshStorageSelect: (String?) -> Unit) {
     val mutableStorageInfosList = remember { mutableStateListOf(*storageInfos.toTypedArray()) }
     val lazyListState = rememberLazyListState()
     val reorderableLazyListState =
         rememberReorderableLazyListState(lazyListState) { from, to ->
             mutableStorageInfosList.apply { add(to.index, removeAt(from.index)) }
-            if (to.index == 0 ) {
-                // TODO: Save it to settings
+            if (to.index == 0  || from.index == 0 ) {
+                // Save it to settings
+                savePreferredStorageDir(sharedPrefs, mutableStorageInfosList.first().dir)
+                // callback to let parent compose update
+                onFreshStorageSelect(getPreferredStorageDir(sharedPrefs))
             }
         }
     LazyColumn(
@@ -198,6 +220,17 @@ fun bytesToHumanReadableSize(bytes: Long) =
         bytes >= 1 shl 10 -> "%.0f kB".format(bytes.toDouble() / (1 shl 10))
         else -> "$bytes bytes"
     }
+
+fun savePreferredStorageDir(sharedPrefs: SharedPreferences, dir: String) {
+    with (sharedPrefs.edit()) {
+        putString("selected_storage_dir", dir)
+        apply()
+    }
+}
+
+fun getPreferredStorageDir(sharedPrefs: SharedPreferences): String? {
+    return sharedPrefs.getString("selected_storage_dir", null)
+}
 
 @Composable
 fun Greeting(

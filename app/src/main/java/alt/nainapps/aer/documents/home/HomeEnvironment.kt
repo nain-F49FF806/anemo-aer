@@ -6,6 +6,7 @@ package alt.nainapps.aer.documents.home
 
 import android.content.Context
 import android.os.Environment
+import android.preference.PreferenceManager.getDefaultSharedPreferences
 import java.io.File
 import java.io.IOException
 import java.nio.file.Files
@@ -16,8 +17,9 @@ class HomeEnvironment private constructor(
     context: Context,
 ) {
     val baseDir: Path =
-        getSelectExternalFilesDir(context)?.toPath()
-            ?: context.filesDir.toPath() // internal
+            getPreferredStorageFilesDir(context)?.toPath() // manual config
+                ?: getSelectExternalFilesDir(context)?.toPath()
+                ?: context.filesDir.toPath() // internal
 
     init {
         if (!Files.exists(baseDir)) {
@@ -28,6 +30,13 @@ class HomeEnvironment private constructor(
     }
 
     fun isRoot(path: Path): Boolean = baseDir == path
+
+    private fun getPreferredStorageFilesDir(context: Context): File? {
+        val sharedPrefs = getDefaultSharedPreferences(context)
+        return sharedPrefs.getString("selected_storage_dir",null)?.let {
+            File(it)
+        }
+    }
 
     private fun getSelectExternalFilesDir(context: Context): File? {
         val externalFilesDirs = context.getExternalFilesDirs(null)
