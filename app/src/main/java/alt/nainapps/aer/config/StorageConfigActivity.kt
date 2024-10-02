@@ -1,5 +1,6 @@
 package alt.nainapps.aer.config
 
+import alt.nainapps.aer.R
 import alt.nainapps.aer.config.ui.theme.AnemoaerTheme
 import android.annotation.SuppressLint
 import android.content.Context
@@ -39,6 +40,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -60,7 +62,8 @@ class StorageConfigActivity : ComponentActivity() {
                         topBar = {
                     TopAppBar(
                         title = {
-                            Text("Aer Storage Backend priority")
+                            // Text("Aer Storage Backend priority")
+                            Text(stringResource(R.string.storage_config_screen_title))
                         }
                     )
                 }) { innerPadding ->
@@ -77,7 +80,7 @@ class StorageConfigActivity : ComponentActivity() {
                         }
 
                         Text(
-                            text = "Drag to reorder:",
+                            text = stringResource(R.string.storage_config_select_help),
                             fontStyle = FontStyle.Italic,
                             modifier = Modifier.padding(8.dp)
                         )
@@ -135,7 +138,10 @@ fun StorageInfoListReorderable(storageInfos: List<StorageInfo>, sharedPrefs: Sha
                 val interactionSource = remember { MutableInteractionSource() }
                 val longPressDraggable = Modifier.longPressDraggableHandle(interactionSource = interactionSource)
                 val draggable = Modifier.draggableHandle(interactionSource = interactionSource)
-                StorageInfoCard(info = info, longPressDraggable, draggable)
+                StorageInfoCard(info = info, longPressDraggable, draggable) {
+                    savePreferredStorageDir(sharedPrefs, info.dir)
+                    onFreshStorageSelect(getPreferredStorageDir(sharedPrefs))
+                }
             }
         }
     }
@@ -148,8 +154,9 @@ fun StorageInfoCard(
     @SuppressLint("ModifierParameter")
     longPressDraggableModifier: Modifier? = null,
     draggableModifier: Modifier? = null,
+    onClick: () -> Unit = {}
 ) {
-    Card(onClick = {}, modifier = (longPressDraggableModifier ?: Modifier).padding(horizontal = 8.dp)) {
+    Card(onClick = onClick, modifier = (longPressDraggableModifier ?: Modifier).padding(horizontal = 8.dp)) {
         Row {
             (draggableModifier ?: longPressDraggableModifier)?.let {
                 IconButton( modifier = it, onClick = {}) {

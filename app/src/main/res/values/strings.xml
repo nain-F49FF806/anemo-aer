@@ -50,9 +50,9 @@
     <string name="tile_auto_lock">Aer storage was automatically locked</string>
 
     <string name="launcher_no_activity">Can\'t find system Files app</string>
-    <string name="shortcut_config_long">Configuration</string>
-    <string name="shortcut_config_short">Configure</string>
-    <string name="shortcut_config_disabled">Configuration (disabled)</string>
+    <string name="shortcut_config_long">Access Configuration</string>
+    <string name="shortcut_config_short">Access Config</string>
+    <string name="shortcut_config_disabled">Access Configuration (disabled)</string>
 
     <string name="configuration_label">Configuration</string>
     <string name="configuration_shortcut">Show shortcut in app list</string>
@@ -64,7 +64,10 @@
     <string name="configuration_storage_unlock_biometric">Allow storage unlock with biometric access</string>
     <string name="configuration_storage_lock_auto">Automatically lock access after 15 minutes</string>
     <string name="title_activity_storage_pref">StoragePrefActivity</string>
-    <string name="shortcut_storageconfig_long">Storage Backend Configuration</string>
+    <string name="shortcut_storageconfig_long">Storage Configuration</string>
     <string name="shortcut_storageconfig_short">Storage Config</string>
     <string name="shortcut_storageconfig_disabled">Storage Config (Disabled)</string>
+    <string name="storage_config_select_help">Tap to select / Drag to reorder:</string>
+    <string name="storage_config_screen_title">Aer Storage Backend</string>
+
 </resources>
