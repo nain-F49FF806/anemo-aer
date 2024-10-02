@@ -58,7 +58,7 @@ jobs:
           name: mappings
           path: "app/build/outputs/mapping/release"
       - name: Create release
-        uses: ncipollo/release-action@v3
+        uses: ncipollo/release-action@v1
         with:
           artifacts: "app/build/outputs/apk/release/app-release.apk"
           draft: true
