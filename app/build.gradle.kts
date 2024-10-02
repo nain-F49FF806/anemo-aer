@@ -14,7 +14,7 @@ android {
     defaultConfig {
         minSdk = rootProject.extra["minSdkVersion"] as Int
         targetSdk = rootProject.extra["targetSdkVersion"] as Int
-        versionCode = 1727862000
+        versionCode = 1727864000
         versionName = "2024.10.02"
         applicationId = "alt.nainapps.aer"
         vectorDrawables {
@@ -48,7 +48,10 @@ android {
     }
 
     buildTypes {
-        val useAnemoConfig = rootProject.ext.get("keyStoreFile") != null && (rootProject.ext.get("keyStoreFile") as File).exists()
+        // Disable this for now. We focus on F-droid builds
+        // which have their own signing system.
+        // val useAnemoConfig = rootProject.ext.get("keyStoreFile") != null && (rootProject.ext.get("keyStoreFile") as File).exists()
+        val useAnemoConfig = false
 
         getByName("release") {
             isMinifyEnabled = true
