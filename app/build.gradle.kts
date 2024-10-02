@@ -14,7 +14,7 @@ android {
     defaultConfig {
         minSdk = rootProject.extra["minSdkVersion"] as Int
         targetSdk = rootProject.extra["targetSdkVersion"] as Int
-        versionCode = 1727857000
+        versionCode = 1727860000
         versionName = "2024.10.02"
         applicationId = "alt.nainapps.aer"
         vectorDrawables {
@@ -38,7 +38,7 @@ android {
 
     signingConfigs {
         if (rootProject.ext.get("keyStoreFile") != null && (rootProject.ext.get("keyStoreFile") as File).exists()) {
-            create("anemo") {
+            create("aer") {
                 storeFile = file(rootProject.ext.get("keyStoreFile") as String)
                 storePassword = rootProject.ext.get("keyStorePassword") as String
                 keyAlias = rootProject.ext.get("keyAlias") as String
@@ -56,14 +56,14 @@ android {
             signingConfig = signingConfigs.getByName("debug")
 
             if (useAnemoConfig) {
-                signingConfig = signingConfigs.getByName("anemo")
+                signingConfig = signingConfigs.getByName("aer")
             }
         }
         getByName("debug") {
             applicationIdSuffix = ".debug"
             signingConfig = signingConfigs.getByName("debug")
             if (useAnemoConfig) {
-                signingConfig = signingConfigs.getByName("anemo")
+                signingConfig = signingConfigs.getByName("aer")
             }
         }
     }
