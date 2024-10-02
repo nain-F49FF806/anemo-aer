@@ -24,3 +24,4 @@ Aer vs Anemo
 In addition to Anemo features above, Aer adds support for external storage, like encrypted SD cards.
 When available Aer will store your files on external storage (which tend to have larger capacity).
 This also allows accessing your private files on your computer when connected using USB (MTP).
+The storage backend used is also manually configurable.
