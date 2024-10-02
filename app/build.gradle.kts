@@ -39,7 +39,7 @@ android {
     signingConfigs {
         if (rootProject.ext.get("keyStoreFile") != null && (rootProject.ext.get("keyStoreFile") as File).exists()) {
             create("aer") {
-                storeFile = file(rootProject.ext.get("keyStoreFile") as String)
+                storeFile = file(rootProject.ext.get("keyStoreFile") as File)
                 storePassword = rootProject.ext.get("keyStorePassword") as String
                 keyAlias = rootProject.ext.get("keyAlias") as String
                 keyPassword = rootProject.ext.get("keyPassword") as String
