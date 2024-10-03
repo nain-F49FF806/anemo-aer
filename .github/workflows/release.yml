@@ -5,6 +5,8 @@ on:
   push:
     tags:
       - '*'
+  release:
+    types: ["published"]
 
 jobs:
   build:
@@ -60,6 +62,7 @@ jobs:
           name: mappings
           path: "app/build/outputs/mapping/release"
       - name: Upload apks to release assets
+        if: ${{ (github.event_name == 'release') }}
         run: |
           curl --fail -L \
             -X POST \
