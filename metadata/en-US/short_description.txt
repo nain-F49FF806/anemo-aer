@@ -1,1 +1,1 @@
-Private local storage utility application for android, with support for secondary storage media (~ encrypted SD cards)
+Private storage utility for android with support for external storage media
