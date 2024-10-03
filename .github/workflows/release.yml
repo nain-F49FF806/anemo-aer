@@ -38,11 +38,13 @@ jobs:
             gradle-builds
       - name: Signing key
         run: |
-          echo 'androidStorePassword=${{ secrets.KEY_STORE_PASSWORD }}' >> local.properties
-          echo 'androidKeyAlias=${{ secrets.ALIAS }}' >> local.properties
-          echo 'androidKeyPassword=${{ secrets.KEY_PASSWORD }}' >> local.properties
-          echo 'androidStoreFile=sign_key.jks' >> local.properties
-          echo '${{ secrets.KEY_STORE }}' | base64 --decode > sign_key.jks
+          echo "androidStorePassword=${{ secrets.KEY_STORE_PASSWORD }}" >> local.properties
+          echo "androidKeyAlias=${{ secrets.KEY_ALIAS }}" >> local.properties
+          echo "androidKeyPassword=${{ secrets.KEY_PASSWORD }}" >> local.properties
+          echo "androidStoreFile=aer_sign_keystore.jks" >> local.properties
+          if [ ! -z "${{ secrets.KEY_STORE }}" ]; then
+            echo '${{ secrets.KEY_STORE }}' | base64 --decode > aer_sign_keystore.jks
+          fi
       - name: Build
         id: build
         run: |

@@ -14,8 +14,8 @@ android {
     defaultConfig {
         minSdk = rootProject.extra["minSdkVersion"] as Int
         targetSdk = rootProject.extra["targetSdkVersion"] as Int
-        versionCode = 1727869000
-        versionName = "2024.10.02"
+        versionCode = 1727979000
+        versionName = "2024.10.03"
         applicationId = "alt.nainapps.aer"
         vectorDrawables {
             useSupportLibrary = true
@@ -48,24 +48,22 @@ android {
     }
 
     buildTypes {
-        // Disable this for now. We focus on F-droid builds
-        // which have their own signing system.
-        // val useAnemoConfig = rootProject.ext.get("keyStoreFile") != null && (rootProject.ext.get("keyStoreFile") as File).exists()
-        val useAnemoConfig = false
+        val useAerSignConfig = rootProject.ext.get("keyStoreFile") != null && (rootProject.ext.get("keyStoreFile") as File).exists()
 
         getByName("release") {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("debug")
 
-            if (useAnemoConfig) {
+            if (useAerSignConfig) {
                 signingConfig = signingConfigs.getByName("aer")
             }
         }
         getByName("debug") {
             applicationIdSuffix = ".debug"
             signingConfig = signingConfigs.getByName("debug")
-            if (useAnemoConfig) {
+
+            if (useAerSignConfig) {
                 signingConfig = signingConfigs.getByName("aer")
             }
         }

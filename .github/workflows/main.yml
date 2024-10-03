@@ -51,7 +51,7 @@ jobs:
 #        if: ${{ github.event_name == 'push' }}
 #        run: |
 #          echo 'androidStorePassword=${{ secrets.KEY_STORE_PASSWORD }}' >> local.properties
-#          echo 'androidKeyAlias=${{ secrets.ALIAS }}' >> local.properties
+#          echo 'androidKeyAlias=${{ secrets.KEY_ALIAS }}' >> local.properties
 #          echo 'androidKeyPassword=${{ secrets.KEY_PASSWORD }}' >> local.properties
 #          echo 'androidStoreFile=sign_key.jks' >> local.properties
 #          echo '${{ secrets.KEY_STORE }}' | base64 --decode > sign_key.jks
