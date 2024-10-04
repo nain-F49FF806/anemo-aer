@@ -26,6 +26,7 @@ Moreover it provides ways for the user to export contents from other apps and sa
   - Auto lock after 15 minutes
   - Password for locking access to the files
 - Import content using the share Android functionality
+- **Option to select which private storage location to use**
 
 ## Download
 
