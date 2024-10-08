@@ -30,13 +30,11 @@ Moreover it provides ways for the user to export contents from other apps and sa
 
 ## Download
 
-Get the Aer apk from github [releases](https://github.com/nain-F49FF806/anemo-aer/releases)
-
-<!--- 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
-     height="60">](https://f-droid.org/packages/exe.bbllw8.anemo/)
--->
+     height="90">](https://f-droid.org/en/packages/alt.nainapps.aer/)
+
+Alternatively, get it from github [releases](https://github.com/nain-F49FF806/anemo-aer/releases)
 
 ## Build
 
