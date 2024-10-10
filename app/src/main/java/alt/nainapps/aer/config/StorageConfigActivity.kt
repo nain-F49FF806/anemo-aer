@@ -18,8 +18,12 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -30,6 +34,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -39,11 +44,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 import java.io.File
@@ -67,8 +75,18 @@ class StorageConfigActivity : ComponentActivity() {
                         }
                     )
                 }) { innerPadding ->
-                    val storageInfos by rememberSaveable { mutableStateOf(fetchExternalStorageDirectories(this.applicationContext)) }
                     var selectedStorageDir by rememberSaveable { mutableStateOf(getPreferredStorageDir(sharedPrefs)) }
+                    var storageInfos = fetchExternalStorageDirectories(this.applicationContext)
+                    val internalStorageInfo =  StorageInfo(
+                        filesDir.toString(),
+                        getTotalSpace(filesDir),
+                        getFreeSpace(filesDir),
+                        isEmulated = false,
+                        isRemoveAble = false,
+                        isInternal = true
+                    )
+                    storageInfos = listOf(*storageInfos.toTypedArray(), internalStorageInfo)
+
                     Column (Modifier.padding(paddingValues = innerPadding)) {
                         selectedStorageDir?.let {
                             Card(modifier = Modifier.padding(8.dp)) {
@@ -157,18 +175,49 @@ fun StorageInfoCard(
     onClick: () -> Unit = {}
 ) {
     Card(onClick = onClick, modifier = (longPressDraggableModifier ?: Modifier).padding(horizontal = 8.dp)) {
-        Row {
+        Row (Modifier.padding(4.dp)) {
             (draggableModifier ?: longPressDraggableModifier)?.let {
                 IconButton( modifier = it, onClick = {}) {
                     Icon(Icons.AutoMirrored.Rounded.List, contentDescription = "Reorder")
                 }
             }
 
-            Column(modifier = Modifier.padding(4.dp)) {
-                Text(text = "Location: ${info.dir}")
-                Text(text = "Total Space: ${ bytesToHumanReadableSize(info.totalSpace) }")
-                Text(text = "Free Space: ${ bytesToHumanReadableSize(info.freeSpace) }")
-                Text(text = "Is Emulated: ${if (info.isEmulated) "Yes" else "No"}")
+            Column {
+                Row (
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = if (info.isInternal) "Internal" else "External", fontWeight = FontWeight.Bold )
+                    Row {
+                        if (info.isRemoveAble) {
+                            SuggestionChip(
+                                onClick = { },
+                                modifier = Modifier.sizeIn(maxHeight = 20.dp).padding(horizontal = 2.dp),
+                                label = { Text(text = "Removable", fontSize = 10.sp)}
+
+                            )
+                        }
+                        if (info.isEmulated) {
+                            SuggestionChip(
+                                onClick = { },
+                                modifier = Modifier.sizeIn(maxHeight = 20.dp).padding(horizontal = 2.dp),
+                                label = { Text(text = "Emulated", fontSize = 10.sp )}
+                            )
+                        }
+                    }
+
+                }
+                val totalSpace = bytesToHumanReadableSize(info.totalSpace)
+                val freeSpace = bytesToHumanReadableSize(info.freeSpace)
+                Column (Modifier.padding(vertical = 4.dp)) {
+                    Text(text = info.dir, fontWeight = FontWeight.Medium)
+                    Text(text = "Total Space: $totalSpace")
+                    Text(text = "Free Space: $freeSpace")
+                    Spacer(Modifier.size(2.dp))
+                }
+
+
             }
         }
     }
@@ -190,20 +239,24 @@ data class StorageInfo(
     val totalSpace: Long,
     val freeSpace: Long,
     val isEmulated: Boolean,
+    val isRemoveAble: Boolean,
+    val isInternal: Boolean
 )
 
 fun fetchExternalStorageDirectories(context: Context): List<StorageInfo> {
     val directories = mutableListOf<StorageInfo>()
     val externalDirs = context.getExternalFilesDirs(null)
 
-    for (dir in externalDirs) {
+    for (dir in externalDirs.reversed()) {
         if (dir != null) {
             val totalSpace = getTotalSpace(dir)
             val freeSpace = getFreeSpace(dir)
 
             val isEmulated = Environment.isExternalStorageEmulated(dir)
+            val isRemovable = Environment.isExternalStorageRemovable(dir)
+            val isInternal = false
 
-            directories.add(StorageInfo(dir.path, totalSpace, freeSpace, isEmulated))
+            directories.add(StorageInfo(dir.path, totalSpace, freeSpace, isEmulated, isRemovable, isInternal))
         }
     }
 
