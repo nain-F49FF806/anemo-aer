@@ -3,25 +3,28 @@ Aer is a private local (+secondary) storage utility application for android.
 Do you worry about your private pictures or files appearing in other apps?
 That's where Aer private storage comes in. Files in Aer storage won't appear in the other apps.
 
-Instead of being a stand-alone file manager user interface, it hooks into various components of
-Android making it feel like a native part of the operative system.
-Moreover it provides ways for the user to export contents from other apps and save them as files.
+Note: Aer is in development 🏗️. Accidents happen. Please keeps backups 👷‍♀️ for your protection.
+
+Instead of being a stand-alone file manager, Aer hooks into various components of Android,
+making it feel like a native part of the operating system. Moreover, it provides ways for the user
+to export contents from other apps and save them in Aer storage.
 
 Features
 
 - Create folders and organize files freely
-- All files in the private storage won't appear in the other apps
-- Access in the system Files application (the _DocumentsProviderUI_)
-    - An optional shortcut for devices that do not expose the system Files app is offered
+- All files in the Aer private storage won't appear in the other apps
+- Access using the system Files application (the DocumentsProviderUI)
+    - An optional shortcut is offered for devices that do not expose the system Files app
+    - The system Files app is also used as file picker, so you can pick Aer files to share
 - Lock access to the private storage
   - Quick tile
   - Auto lock after 15 minutes
   - Password for locking access to the files
-- Import content using the share Android functionality
+- Import content into Aer using the Android share functionality
 
 Aer vs Anemo
 
 In addition to Anemo features above, Aer adds support for external storage, like encrypted SD cards.
 When available Aer will store your files on external storage (which tend to have larger capacity).
-This also allows accessing your private files on your computer when connected using USB (MTP).
+This also allows accessing your private files on your computer when connected using USB cable (MTP).
 The storage backend used is also manually configurable.
