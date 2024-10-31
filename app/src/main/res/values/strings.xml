@@ -6,7 +6,7 @@
     <string name="app_name">Aer</string>
 
     <string name="anemo_description">Local private storage</string>
-    <string name="anemo_info">Files stored in the Aer storage are private and other apps can\'t access them without the user\'s consent.</string>
+    <string name="anemo_info">Files in Aer storage are not directly accessible to other apps.\n\nNote that Aer is in development 🏗️. Accidents happen. Please keeps backups 👷‍♀️ for your protection.</string>
 
     <string name="password_label">Aer password</string>
 
