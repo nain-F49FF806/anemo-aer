@@ -1,0 +1,1 @@
+Utilitário de armazenamento privado para Android com suporte para mídia de armazenamento externa
