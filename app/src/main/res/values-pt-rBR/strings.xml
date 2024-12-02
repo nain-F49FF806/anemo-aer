@@ -1,0 +1,73 @@
+<!--
+  ~ Copyright (c) 2021 2bllw8
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+<resources>
+    <string name="app_name">Aer</string>
+
+    <string name="anemo_description">Armazenamento privado local</string>
+    <string name="anemo_info">Os arquivos no armazenamento do Aer não são diretamente acessíveis a outros aplicativos.\n\nObserve que o Aer ainda está em desenvolvimento 🏗️. Acidentes podem acontecer. Por favor, mantenha backups 👷‍♀️ para sua proteção.</string>
+
+    <string name="password_label">Senha do Aer</string>
+
+    <string name="password_hint_field">Senha</string>
+    <string name="password_hint_repeat">Digite novamente para confirmar</string>
+    <string name="password_hint_current">Senha atual</string>
+
+    <string name="password_error_length">A senha deve ter comprimento mínimo de %1$d</string>
+    <string name="password_error_mismatch">As senhas não correspondem</string>
+    <string name="password_error_wrong">Senha incorreta</string>
+
+    <string name="password_input_message">Digite a senha do Aer para desbloquear o Armazenamento do Aer</string>
+    <string name="password_input_action">Desbloquear</string>
+    <string name="password_input_biometric_message">Autentique-se para desbloquear o Armazenamento do Aer</string>
+    <string name="password_input_biometric_fallback">Usar senha</string>
+
+    <string name="password_set_title">Adicionar proteção por senha</string>
+    <string name="password_set_message">Defina uma senha para bloquear o acesso ao Armazenamento do Aer</string>
+    <string name="password_set_action">Definir senha</string>
+
+    <string name="password_change_title">Trocar senha</string>
+    <string name="password_change_message">Troque a senha para desbloquear o Armazenamento do Aer</string>
+    <string name="password_change_action">Trocar</string>
+    <string name="password_change_remove">Remover</string>
+
+    <string name="receiver_label">Importar para o Aer</string>
+
+    <string name="receiver_importing_message">Importando o arquivo…</string>
+    <string name="receiver_importing_done_ok">Importado para o Aer</string>
+    <string name="receiver_importing_done_fail">Não foi possível importar o arquivo. Tente novamente</string>
+
+    <string name="receiver_default_file_name">Arquivo compartilhado</string>
+
+    <string name="tile_title">Armazenamento do Aer</string>
+
+    <string name="tile_lock">Bloquear Aer</string>
+    <string name="tile_unlock">Desbloquear Aer</string>
+    <string name="tile_status_locked">Agora bloqueado</string>
+    <string name="tile_status_unlocked">Agora desbloqueado</string>
+
+    <string name="tile_auto_lock">O armazenamento do Aer foi bloqueado automaticamente</string>
+
+    <string name="launcher_no_activity">Não é possível encontrar o aplicativo Arquivos do sistema</string>
+    <string name="shortcut_config_long">Acessar Configuração</string>
+    <string name="shortcut_config_short">Acessar Config</string>
+    <string name="shortcut_config_disabled">Acessar Configuração (desativado)</string>
+
+    <string name="configuration_label">Configuração</string>
+    <string name="configuration_shortcut">Mostrar atalho na lista de aplicativos</string>
+    <string name="configuration_protection">Proteção</string>
+    <string name="configuration_password_set">Definir senha</string>
+    <string name="configuration_password_change">Trocar senha</string>
+    <string name="configuration_storage_lock">Bloquear acesso ao armazenamento</string>
+    <string name="configuration_storage_unlock">Desbloquear acesso ao armazenamento</string>
+    <string name="configuration_storage_unlock_biometric">Permitir desbloqueio do armazenamento com acesso biométrico</string>
+    <string name="configuration_storage_lock_auto">Bloquear acesso automaticamente após 15 minutos</string>
+    <string name="title_activity_storage_pref">StoragePrefActivity</string>
+    <string name="shortcut_storageconfig_long">Configuração do Armazenamento</string>
+    <string name="shortcut_storageconfig_short">Config do Armazenamento</string>
+    <string name="shortcut_storageconfig_disabled">Config do Armazenamento (desativado)</string>
+    <string name="storage_config_select_help">Toque para selecionar / Arraste para reordenar:</string>
+    <string name="storage_config_screen_title">Backend de Armazenamento do Aer</string>
+
+</resources>
