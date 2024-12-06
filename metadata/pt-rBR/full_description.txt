@@ -1,0 +1,30 @@
+Aer é um aplicativo utilitário de armazenamento (+secundário) local privado para Android.
+
+Você se preocupa com suas fotos ou arquivos privados aparecendo em outros aplicativos?
+É aí que entra o armazenamento privado do Aer. Arquivos no armazenamento do Aer não aparecerão nos outros aplicativos.
+
+Observação: Aer ainda está em desenvolvimento 🏗️. Acidentes podem acontecer. Por favor, mantenha backups 👷‍♀️ para sua proteção.
+
+Em vez de ser um gerenciador de arquivos independente, o Aer se conecta a vários componentes do Android,
+fazendo com que pareça uma parte nativa do sistema operacional. Além disso, ele fornece maneiras para o usuário
+exportar conteúdos de outros aplicativos e salvá-los no armazenamento do Aer.
+
+Funcionalidades
+
+- Crie pastas e organize arquivos livremente
+- Todos os arquivos no armazenamento privado do Aer não aparecerão nos outros aplicativos
+- Acesse usando o aplicativo Arquivos do sistema (DocumentsProviderUI)
+  - Um atalho opcional é oferecido para dispositivos que não expõem o aplicativo Arquivos do sistema
+  - O aplicativo Arquivos do sistema também é usado como seletor de arquivos, assim você pode escolher arquivos do Aer para compartilhar
+- Bloquear acesso ao armazenamento privado
+  - Atalho nas Configurações Rápidas
+  - Bloqueio automático após 15 minutos
+  - Senha para bloquear o acesso aos arquivos
+- Importe conteúdo para o Aer usando a funcionalidade de compartilhamento do Android
+
+Aer vs Anemo
+
+Além dos recursos do Anemo citados acima, o Aer adiciona suporte para armazenamento externo, como cartões SD criptografados.
+Quando disponível, o Aer armazenará seus arquivos no armazenamento externo (que tende a ter maior capacidade).
+Isso também permite acessar seus arquivos privados no seu computador quando conectado usando um cabo USB (MTP).
+O backend de armazenamento usado também é configurável manualmente.
