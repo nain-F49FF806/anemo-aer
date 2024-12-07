@@ -4,6 +4,11 @@
  */
 package alt.nainapps.aer.lock
 
+import alt.nainapps.aer.R
+import alt.nainapps.aer.config.ConfigurationActivity
+import alt.nainapps.aer.config.password.PasswordTextListener
+import alt.nainapps.aer.lock.LockStore.Companion.getInstance
+import alt.nainapps.aer.shell.LauncherActivity
 import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
@@ -15,11 +20,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
-import alt.nainapps.aer.R
-import alt.nainapps.aer.config.ConfigurationActivity
-import alt.nainapps.aer.config.password.TextListener
-import alt.nainapps.aer.lock.LockStore.Companion.getInstance
-import alt.nainapps.aer.shell.LauncherActivity
 
 class UnlockActivity : Activity() {
     private var lockStore: LockStore? = null
@@ -50,7 +50,7 @@ class UnlockActivity : Activity() {
         val unlockBtn = findViewById<Button>(R.id.unlockButton)
         val cancelBtn = findViewById<Button>(R.id.cancelButton)
 
-        passwordField.addTextChangedListener(TextListener { text: String? ->
+        passwordField.addTextChangedListener(PasswordTextListener { text: String? ->
             unlockBtn.isEnabled = passwordField.text.length >= MIN_PASSWORD_LENGTH
         })
 

@@ -7,7 +7,7 @@ package alt.nainapps.aer.config.password
 import android.text.Editable
 import android.text.TextWatcher
 
-fun interface TextListener : TextWatcher {
+fun interface PasswordTextListener : TextWatcher {
     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
     }
 

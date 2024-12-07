@@ -23,7 +23,7 @@ Moreover it provides ways for the user to export contents from other apps and sa
     - An optional shortcut for devices that do not expose the system Files app is offered
 - Lock access to the private storage
   - Quick tile
-  - Auto lock after 15 minutes
+  - **Auto lock after set delay**
   - Password for locking access to the files
 - Import content using the share Android functionality
 - **Option to select which private storage location to use**
