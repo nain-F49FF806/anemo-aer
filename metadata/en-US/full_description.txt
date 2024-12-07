@@ -18,7 +18,7 @@ Features
     - The system Files app is also used as file picker, so you can pick Aer files to share
 - Lock access to the private storage
   - Quick tile
-  - Auto lock after 15 minutes
+  - Auto lock after set delay
   - Password for locking access to the files
 - Import content into Aer using the Android share functionality
 
