@@ -42,8 +42,8 @@ class SetPasswordDialog(activity: Activity, lockStore: LockStore, onSuccess: Run
     private fun buildValidator(
         passwordField: EditText, repeatField: EditText,
         positiveBtn: Button
-    ): TextListener {
-        return TextListener {
+    ): PasswordTextListener {
+        return PasswordTextListener {
             val passwordValue = passwordField.text.toString()
             val repeatValue = repeatField.text.toString()
             if (passwordValue.length < MIN_PASSWORD_LENGTH) {
