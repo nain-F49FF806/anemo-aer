@@ -62,14 +62,13 @@
     <string name="configuration_storage_lock">Lock storage access</string>
     <string name="configuration_storage_unlock">Unlock storage access</string>
     <string name="configuration_storage_unlock_biometric">Allow storage unlock with biometric access</string>
-    <string name="configuration_storage_lock_auto">Automatically lock access after _ minutes</string>
+    <string name="configuration_storage_lock_auto">Automatically lock access after delay</string>
     <string name="title_activity_storage_pref">StoragePrefActivity</string>
     <string name="shortcut_storageconfig_long">Storage Configuration</string>
     <string name="shortcut_storageconfig_short">Storage Config</string>
     <string name="shortcut_storageconfig_disabled">Storage Config (Disabled)</string>
     <string name="storage_config_select_help">Tap to select / Drag to reorder:</string>
     <string name="storage_config_screen_title">Aer Storage Backend</string>
-    <string name="configuration_auto_lock_delay_minutes_label">Autolock delay (in minutes)</string>
-    <string name="configuration_auto_lock_delay_minutes_default">15</string>
+    <string name="configuration_auto_lock_delay_minutes_label">Auto lock delay (in minutes)</string>
 
 </resources>

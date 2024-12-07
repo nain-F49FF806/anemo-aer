@@ -1,5 +1,6 @@
 <!--
   ~ Copyright (c) 2022 2bllw8
+  ~ Copyright (c) 2024 nain
   ~ SPDX-License-Identifier: GPL-3.0-only
   -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -55,11 +56,15 @@
             android:textSize="16sp"
             tools:text="@string/configuration_password_set" />
 
-        <View
-            android:id="@+id/divider"
+        <Switch
+            android:id="@+id/configuration_biometric_unlock"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
+            android:layout_height="wrap_content"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:minHeight="56dp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/configuration_storage_unlock_biometric"
+            android:textSize="16sp" />
 
         <Switch
             android:id="@+id/configuration_auto_lock"
@@ -77,45 +82,26 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/configuration_auto_lock_delay"
-                android:layout_width="match_parent"
+                android:id="@+id/configuration_auto_lock_delay_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:labelFor="@+id/config_auto_lock_delay_minutes"
                 android:paddingHorizontal="16dp"
+                android:text="@string/configuration_auto_lock_delay_minutes_label"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="16sp"
-                android:labelFor="@+id/config_auto_lock_delay_minutes_input"
-                android:text="@string/configuration_auto_lock_delay_minutes_label"
-                tools:text="@string/configuration_auto_lock_delay_minutes_label"/>
+                tools:text="@string/configuration_auto_lock_delay_minutes_label" />
 
             <EditText
-                android:id="@+id/config_auto_lock_delay_minutes_input"
+                android:id="@+id/config_auto_lock_delay_minutes"
                 android:layout_width="wrap_content"
-                android:layout_height="56dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:autofillHints="autoLockDelayMinutes"
-                android:ems="5"
-                android:inputType="numberDecimal"
-                android:text="@string/configuration_auto_lock_delay_minutes_default"
-                />
-
+                android:minHeight="56dp"
+                android:minEms="3"
+                android:maxEms="5"
+                android:inputType="number" />
         </LinearLayout>
-
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="?android:attr/listDivider" />
-
-        <Switch
-            android:id="@+id/configuration_biometric_unlock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:minHeight="56dp"
-            android:paddingHorizontal="16dp"
-            android:text="@string/configuration_storage_unlock_biometric"
-            android:textSize="16sp" />
 
 
     </LinearLayout>

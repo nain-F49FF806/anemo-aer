@@ -1,10 +1,12 @@
 /*
  * Copyright (c) 2022 2bllw8
+ * Copyright (c) 2024 nain
  * SPDX-License-Identifier: GPL-3.0-only
  */
 package alt.nainapps.aer.config
 
 import alt.nainapps.aer.R
+import alt.nainapps.aer.config.autolock.buildValidatedAutoLockDelayListener
 import alt.nainapps.aer.config.password.ChangePasswordDialog
 import alt.nainapps.aer.config.password.SetPasswordDialog
 import alt.nainapps.aer.lock.LockStore
@@ -13,8 +15,10 @@ import alt.nainapps.aer.shell.AnemoShell
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.CompoundButton
+import android.widget.EditText
 import android.widget.Switch
 import android.widget.TextView
 import java.util.function.Consumer
@@ -67,6 +71,13 @@ class ConfigurationActivity : Activity() {
         autoLockSwitch.setOnCheckedChangeListener { _: CompoundButton?, isChecked: Boolean ->
             lockStore.isAutoLockEnabled = isChecked
         }
+
+        val autoLockDelayMinutesEditable = findViewById<EditText>(R.id.config_auto_lock_delay_minutes)
+        autoLockDelayMinutesEditable.text = Editable.Factory.getInstance().newEditable(
+            lockStore.autoLockDelayMinutes.toString()
+        )
+        val autoLockDelayListener = buildValidatedAutoLockDelayListener(this.baseContext, lockStore, autoLockDelayMinutesEditable)
+        autoLockDelayMinutesEditable.addTextChangedListener(autoLockDelayListener)
 
         biometricSwitch = findViewById(R.id.configuration_biometric_unlock)
         biometricSwitch!!.visibility = if (lockStore.canAuthenticateBiometric()) View.VISIBLE else View.GONE

@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2021 2bllw8
+ * Copyright (c) 2024 nain
  * SPDX-License-Identifier: GPL-3.0-only
  */
 package alt.nainapps.aer.lock
@@ -114,6 +115,22 @@ class LockStore private constructor(context: Context) : OnSharedPreferenceChange
             }
         }
 
+    @get:Synchronized
+    @set:Synchronized
+    var autoLockDelayMinutes: Long
+        get() = preferences.getLong(KEY_AUTO_LOCK_DELAY_MINUTES, DEFAULT_AUTO_LOCK_DELAY_MINUTES)
+        set(delayMinutes) {
+            preferences.edit().putLong(KEY_AUTO_LOCK_DELAY_MINUTES, delayMinutes).apply()
+
+            if (!isLocked) {
+                if (isAutoLockEnabled) {
+                    // If auto-lock is enabled while the storage is unlocked, schedule new job
+                    cancelAutoLock()
+                    scheduleAutoLock()
+                }
+            }
+        }
+
     fun canAuthenticateBiometric(): Boolean {
         return Build.VERSION.SDK_INT >= 29 && biometricManager != null && biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_SUCCESS
     }
@@ -146,7 +163,7 @@ class LockStore private constructor(context: Context) : OnSharedPreferenceChange
     private fun scheduleAutoLock() {
         jobScheduler.schedule(
             JobInfo.Builder(AUTO_LOCK_JOB_ID, autoLockComponent)
-                .setMinimumLatency(AUTO_LOCK_DELAY)
+                .setMinimumLatency(millisFromMinutes(autoLockDelayMinutes))
                 .build()
         )
     }
@@ -166,6 +183,11 @@ class LockStore private constructor(context: Context) : OnSharedPreferenceChange
         }
     }
 
+    // convert minutes to milliseconds
+    private fun millisFromMinutes(minutes: Long): Long {
+        return minutes * 60L * 1000L
+    }
+
     companion object {
         private const val TAG = "LockStore"
 
@@ -173,16 +195,15 @@ class LockStore private constructor(context: Context) : OnSharedPreferenceChange
         private const val KEY_LOCK = "is_locked"
         private const val KEY_PASSWORD = "password_hash"
         private const val KEY_AUTO_LOCK = "auto_lock"
+        private const val KEY_AUTO_LOCK_DELAY_MINUTES = "auto_lock_delay_minutes"
         private const val KEY_BIOMETRIC_UNLOCK = "biometric_unlock"
         private const val DEFAULT_LOCK_VALUE = false
         private const val DEFAULT_AUTO_LOCK_VALUE = false
+        private const val DEFAULT_AUTO_LOCK_DELAY_MINUTES = 15L
 
         private const val HASH_ALGORITHM = "SHA-256"
 
         private const val AUTO_LOCK_JOB_ID = 64
-
-        // 15 minutes in milliseconds
-        private const val AUTO_LOCK_DELAY = 1000L * 60L * 15L
 
         @Volatile
         private var instance: LockStore? = null
