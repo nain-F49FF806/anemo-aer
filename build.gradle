@@ -39,7 +39,7 @@ if (file('local.properties').exists()) {
 
 ext {
     minSdkVersion = 26
-    targetSdkVersion = 34
+    targetSdkVersion = 35
 
     sourceCompatibilityVersion = JavaVersion.VERSION_17
     targetCompatibilityVersion = JavaVersion.VERSION_17
