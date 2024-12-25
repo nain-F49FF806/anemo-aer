@@ -120,6 +120,18 @@ class AnemoDocumentProvider : FileSystemProvider() {
                 DocumentsContract.EXTRA_INFO,
                 context!!.getText(R.string.anemo_info),
             )
+            // If below Android 11 warn about reduced privacy of external storage
+            if (Build.VERSION.SDK_INT < 30) {
+                val baseDir = homeEnvironment?.baseDir?.toFile()
+                val externalDirs = context!!.getExternalFilesDirs(null)
+                if (baseDir in externalDirs) {
+                    extras.remove(DocumentsContract.EXTRA_INFO)
+                    extras.putCharSequence(
+                        DocumentsContract.EXTRA_ERROR,
+                        context!!.getText(R.string.anemo_error),
+                    )
+                }
+            }
             c.extras = extras
         }
         return c

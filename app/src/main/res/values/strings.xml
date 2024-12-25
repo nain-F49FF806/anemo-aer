@@ -7,6 +7,7 @@
 
     <string name="anemo_description">Local private storage</string>
     <string name="anemo_info">Files in Aer storage are not directly accessible to other apps.\n\nNote that Aer is in development 🏗️. Accidents happen. Please keeps backups 👷‍♀️ for your protection.</string>
+    <string name="anemo_error">Prior to Android 11, external storage is readily visible to other apps. Prefer Internal storage for better privacy.</string>
 
     <string name="password_label">Aer password</string>
 
