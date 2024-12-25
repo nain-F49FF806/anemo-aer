@@ -5,6 +5,7 @@
 package alt.nainapps.aer.documents.home
 
 import android.content.Context
+import android.os.Build
 import android.os.Environment
 import android.preference.PreferenceManager.getDefaultSharedPreferences
 import java.io.File
@@ -39,6 +40,12 @@ class HomeEnvironment private constructor(
     }
 
     private fun getSelectExternalFilesDir(context: Context): File? {
+        // Below Android 11 (API 30) we do not prefer external storage
+        // as privacy of external filedir is guaranteed from Android 11 only.
+        // https://developer.android.com/about/versions/11/privacy/storage#other-app-specific-dirs
+        if (Build.VERSION.SDK_INT < 30) {
+            return null
+        }
         val externalFilesDirs = context.getExternalFilesDirs(null)
         // The first few (in forward order) may be on primary storage,
         // so we traverse in reverse order to find first available externalFilesDir
