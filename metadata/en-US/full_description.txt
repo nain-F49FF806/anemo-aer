@@ -9,20 +9,22 @@ Instead of being a stand-alone file manager, Aer hooks into various components o
 making it feel like a native part of the operating system. Moreover, it provides ways for the user
 to export contents from other apps and save them in Aer storage.
 
-Features
+<em>Features</em>
 
-- Create folders and organize files freely
-- All files in the Aer private storage won't appear in the other apps
-- Access using the system Files application (the DocumentsProviderUI)
-    - An optional shortcut is offered for devices that do not expose the system Files app
-    - The system Files app is also used as file picker, so you can pick Aer files to share
-- Lock access to the private storage
-  - Quick tile
-  - Auto lock after set delay
-  - Password for locking access to the files
-- Import content into Aer using the Android share functionality
+<ul>
+<li> Create folders and organize files freely
+<li> All files in the Aer private storage won't appear in the other apps
+<li> Access using the system Files application (the DocumentsProviderUI)
+    <li> An optional shortcut is offered for devices that do not expose the system Files app
+    <li> The system Files app is also used as file picker, so you can pick Aer files to share
+<li> Lock access to the private storage
+    <li> Quick tile
+    <li> Auto lock after set delay (experimental)
+    <li> Password for locking access to the files
+<li> Import content into Aer using the Android share functionality
+</ul>
 
-Aer vs Anemo
+<em>Aer vs Anemo</em>
 
 In addition to Anemo features above, Aer adds support for external storage, like encrypted SD cards.
 When available Aer will store your files on external storage (which tend to have larger capacity).
